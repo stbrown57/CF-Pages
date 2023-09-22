@@ -1,5 +1,5 @@
 ---
-weight: 999
+weight = 999
 title = "Cycling"
 description = ""
 icon = "article"
