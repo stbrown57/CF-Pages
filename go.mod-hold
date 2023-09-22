@@ -1,4 +1,4 @@
-module CF-Pages
+module github.com/stbrown57/CF-Hugo-Pages
 
 go 1.19
 
