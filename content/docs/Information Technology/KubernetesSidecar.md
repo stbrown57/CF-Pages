@@ -1,17 +1,18 @@
----
-weight: 999
-title: "Kubernetes Sidecar"
-description: ""
-icon: "article"
-date: "2023-09-21T15:31:07-04:00"
-lastmod: "2023-09-21T15:31:07-04:00"
-draft: true
-toc: true
----
++++
+weight = 999
+title = "Kubernetes Sidecar"
+description = ""
+icon = "article"
+date = "2023-09-21T15:31:07-04:00"
+lastmod = "2023-09-21T15:31:07-04:00"
+draft = true
+toc = true
++++
 Create a "sidecar" container to run "tcpdump" in the pod.
+
 - Identify an  appropriate image with tcpdump  
   - d97jro/tcpdump
-- Create a yaml file to modify the 
+- Create a yaml file to modify the
 
 ```yaml
 Name:         coredns-6c6bb68b64-ncffx
@@ -44,7 +45,9 @@ Edit deployment config...
         - -conf
         - /etc/coredns/Corefile
 ```
+
 Connect to the container and install tcpdump
+
 ```bash
 kubectl exec -it coredns-6457d5c768-7s95p -c tcpdump /bin/sh -n kube-system
 # apk update
