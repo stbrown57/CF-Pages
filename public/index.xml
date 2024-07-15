@@ -6,35 +6,112 @@
     <description>Recent content on BFNet Docs</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 21 Sep 2023 12:27:19 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 30 Jun 2024 19:46:59 -0400</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cannonball</title>
       <link>//localhost:1313/docs/cycling/2023-09-19-cannonball2023/</link>
       <pubDate>Tue, 19 Sep 2023 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/docs/cycling/2023-09-19-cannonball2023/</guid>
-      <description>Centuries After using a Garmin training plan to perpare for the event, I was looking forward to a great ride. The ride was great, but it was a mixed bag and the effectiveness of the training is in question. The table below list key metrics on the history of my century rides. Power meteric, which are more important on a macro level, were only availible for a small number of rides.</description>
+      <description>Centuries linkAfter using a Garmin training plan to perpare for the event, I was looking forward to a great ride. The ride was great, but it was a mixed bag and the effectiveness of the training is in question. The table below list key metrics on the history of my century rides. Power meteric, which are more important on a macro level, were only availible for a small number of rides.</description>
+    </item>
+    <item>
+      <title>Bike</title>
+      <link>//localhost:1313/docs/cycling/b2024-06-30-bike/</link>
+      <pubDate>Sun, 30 Jun 2024 19:46:59 -0400</pubDate>
+      <guid>//localhost:1313/docs/cycling/b2024-06-30-bike/</guid>
+      <description>Update Equipment link My newest bike is the 2010 Specialize Tarmac Comp. It experianced some frame damage about four or five years ago on a vacation in New England. The bike works, but the finish and coating was damaged which maybe leading to questionable integrty of the frame. The drive componants, headset and wheels were replace in 2017 with Shimano 150 7000 componants. It is still riding, but the headset / front end, is lose and may not be repairable.</description>
     </item>
     <item>
       <title>Code</title>
       <link>//localhost:1313/docs/example-content/code/</link>
       <pubDate>Mon, 22 May 2023 00:44:31 +0100</pubDate>
       <guid>//localhost:1313/docs/example-content/code/</guid>
-      <description>Code Block Examples Code block language examples&#xA;Go package main import &amp;#34;fmt&amp;#34; func main() { fmt.Println(&amp;#34;hello world&amp;#34;) } HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;My First Heading&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;My first paragraph.&amp;lt;/p&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; Markdown # H1 heading **Some bold text** *Italic text example* </description>
+      <description>Code Block Examples linkCode block language examples&#xA;Go link package main import &amp;#34;fmt&amp;#34; func main() { fmt.Println(&amp;#34;hello world&amp;#34;) } HTML link &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;My First Heading&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;My first paragraph.&amp;lt;/p&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; Markdown link # H1 heading **Some bold text** *Italic text example* </description>
     </item>
     <item>
       <title>Mermaid</title>
       <link>//localhost:1313/docs/example-content/mermaid/</link>
       <pubDate>Fri, 08 Sep 2023 05:12:51 +0100</pubDate>
       <guid>//localhost:1313/docs/example-content/mermaid/</guid>
-      <description>Flowchart flowchart LR A[Hard] --&amp;gt;|Text| B(Round) B --&amp;gt; C{Decision} C --&amp;gt;|One| D[Result 1] C --&amp;gt;|Two| E[Result 2] Sequence diagram sequenceDiagram Alice-&amp;gt;&amp;gt;John: Hello John, how are you? loop Healthcheck John-&amp;gt;&amp;gt;John: Fight against hypochondria end Note right of John: Rational thoughts! John--&amp;gt;&amp;gt;Alice: Great! John-&amp;gt;&amp;gt;Bob: How about you? Bob--&amp;gt;&amp;gt;John: Jolly good! Gnatt Chart gantt section Section Completed :done, des1, 2014-01-06,2014-01-08 Active :active, des2, 2014-01-07, 3d Parallel 1 : des3, after des1, 1d Parallel 2 : des4, after des1, 1d Parallel 3 : des5, after des3, 1d Parallel 4 : des6, after des4, 1d Class diagram classDiagram Class01 &amp;lt;|-- AveryLongClass : Cool &amp;lt;&amp;lt;interface&amp;gt;&amp;gt; Class01 Class09 --&amp;gt; C2 : Where am i?</description>
+      <description>Flowchart linkflowchart LR A[Hard] --&amp;gt;|Text| B(Round) B --&amp;gt; C{Decision} C --&amp;gt;|One| D[Result 1] C --&amp;gt;|Two| E[Result 2] Sequence diagram linksequenceDiagram Alice-&amp;gt;&amp;gt;John: Hello John, how are you? loop Healthcheck John-&amp;gt;&amp;gt;John: Fight against hypochondria end Note right of John: Rational thoughts! John--&amp;gt;&amp;gt;Alice: Great! John-&amp;gt;&amp;gt;Bob: How about you? Bob--&amp;gt;&amp;gt;John: Jolly good! Gnatt Chart linkgantt section Section Completed :done, des1, 2014-01-06,2014-01-08 Active :active, des2, 2014-01-07, 3d Parallel 1 : des3, after des1, 1d Parallel 2 : des4, after des1, 1d Parallel 3 : des5, after des3, 1d Parallel 4 : des6, after des4, 1d Class diagram linkclassDiagram Class01 &amp;lt;|-- AveryLongClass : Cool &amp;lt;&amp;lt;interface&amp;gt;&amp;gt; Class01 Class09 --&amp;gt; C2 : Where am i?</description>
     </item>
     <item>
-      <title>Bike Upgrade</title>
-      <link>//localhost:1313/docs/cycling/2023-09-20-bike/</link>
-      <pubDate>Thu, 21 Sep 2023 12:27:19 -0400</pubDate>
-      <guid>//localhost:1313/docs/cycling/2023-09-20-bike/</guid>
-      <description>Update Equipment My newest bike is the 2010 Specialize Tarmac Comp. It experianced some frame damage about four or five years ago on a vacation in New England. The bike works, but the finish and coating was damaged which maybe leading to questionable integrty of the frame. The drive componants, headset and wheels were replace in 2017 with Shimano 150 7000 componants. It is still riding, but the headset / front end, is lose and may not be repairable.</description>
+      <title>K3s Rebuild</title>
+      <link>//localhost:1313/docs/network/kubernetes/k3srebuild/</link>
+      <pubDate>Thu, 21 Sep 2023 15:40:51 -0400</pubDate>
+      <guid>//localhost:1313/docs/network/kubernetes/k3srebuild/</guid>
+      <description>Remove current cluster link On worker node: sudo /var/local/bin/k3s-agent-uninstall.sh sudo /var/local/bin/k3s-killall.sh sudo rm -R /var/lib/rancher/k3s/agent sudo rm -R /var/lib/rancher/k3s/data sudo rm -R /var/lib/rancher/k3s/server On the master: sudo /var/local/bin/k3s-uninstall.sh sudo /var/local/bin/k3s-killall.sh sudo rm -R /var/lib/rancher/k3s/agent sudo rm -R /var/lib/rancher/k3s/data sudo rm -R /var/lib/rancher/k3s/server &amp;hellip;or image a new K3os instance link Burn Armbian image to ssd card Shutdown cluster and remove all modules Image sopine0 install module0 boot &amp;hellip;try link Armbian_20.11_Pine64so_bionic_current_5.8.16 No ethernet Armbian_20.</description>
+    </item>
+    <item>
+      <title>Kubernete Cluster</title>
+      <link>//localhost:1313/docs/network/kubernetes/kubernetecluster/</link>
+      <pubDate>Thu, 21 Sep 2023 15:39:22 -0400</pubDate>
+      <guid>//localhost:1313/docs/network/kubernetes/kubernetecluster/</guid>
+      <description>Rancher linkA cluster was added to the host pinarello, and Rancher was installed. Trying to add the felt cluster fails with a CrashLoopBackOff status. The log of the pod shows:&#xA;sbrown@bianchi ~]$ kubectl logs -n cattle-system cattle-cluster-agent-6bb97bd9ff-qbdk2 INFO: Environment: CATTLE_ADDRESS=10.42.0.9 CATTLE_CA_CHECKSUM=0df5882f1714e8d8989215b7c25b59fd2cd623f62d568dd8adc34d1729c6fb06 CATTLE_CLUSTER=true CATTLE_CLUSTER_AGENT_PORT=tcp://10.43.129.180:80 CATTLE_CLUSTER_AGENT_PORT_443_TCP=tcp://10.43.129.180:443 CATTLE_CLUSTER_AGENT_PORT_443_TCP_ADDR=10.43.129.180 CATTLE_CLUSTER_AGENT_PORT_443_TCP_PORT=443 CATTLE_CLUSTER_AGENT_PORT_443_TCP_PROTO=tcp CATTLE_CLUSTER_AGENT_PORT_80_TCP=tcp://10.43.129.180:80 CATTLE_CLUSTER_AGENT_PORT_80_TCP_ADDR=10.43.129.180 CATTLE_CLUSTER_AGENT_PORT_80_TCP_PORT=80 CATTLE_CLUSTER_AGENT_PORT_80_TCP_PROTO=tcp CATTLE_CLUSTER_AGENT_SERVICE_HOST=10.43.129.180 CATTLE_CLUSTER_AGENT_SERVICE_PORT=80 CATTLE_CLUSTER_AGENT_SERVICE_PORT_HTTP=80 CATTLE_CLUSTER_AGENT_SERVICE_PORT_HTTPS_INTERNAL=443 CATTLE_CLUSTER_REGISTRY= CATTLE_INGRESS_IP_DOMAIN=sslip.io CATTLE_INSTALL_UUID=2ce92d8c-5a0a-485e-83cd-910a362cf557 CATTLE_INTERNAL_ADDRESS= CATTLE_IS_RKE=false CATTLE_K8S_MANAGED=true CATTLE_NODE_NAME=cattle-cluster-agent-6bb97bd9ff-qbdk2 CATTLE_SERVER=https://pinarello.6browns.org CATTLE_SERVER_VERSION=v2.6.6 INFO: Using resolv.conf: search cattle-system.svc.cluster.local svc.cluster.local cluster.</description>
+    </item>
+    <item>
+      <title>Kubernetes Sidecar</title>
+      <link>//localhost:1313/docs/information-technology/kubernetessidecar/</link>
+      <pubDate>Thu, 21 Sep 2023 15:31:07 -0400</pubDate>
+      <guid>//localhost:1313/docs/information-technology/kubernetessidecar/</guid>
+      <description>Create a &amp;ldquo;sidecar&amp;rdquo; container to run &amp;ldquo;tcpdump&amp;rdquo; in the pod.&#xA;Identify an appropriate image with tcpdump d97jro/tcpdump Create a yaml file to modify the Name: coredns-6c6bb68b64-ncffx Namespace: kube-system Labels: k8s-app=kube-dns pod-template-hash=6c6bb68b64 Containers: tcpdump: Image: d97jro/tcpdump I&amp;rsquo;m not sure how you are suppose to run this image, so I&amp;rsquo;ll create a standard alpine container that I will install tcpdump once it is in the pod. The container may have to be updated later with a volume for the collection.</description>
+    </item>
+    <item>
+      <title>Cloudflare and Kubernetes</title>
+      <link>//localhost:1313/docs/network/kubernetes/cloudflarekubernetes/</link>
+      <pubDate>Thu, 21 Sep 2023 15:19:46 -0400</pubDate>
+      <guid>//localhost:1313/docs/network/kubernetes/cloudflarekubernetes/</guid>
+      <description>Cloudflared tunnel on K3s, connect to ingress, instead of service. That would allow trusted certificates from both internal sources and the CF system.&#xA;One post says, Cloudflare tunnel can only link to a service. In that case the ingress can be made for the internal service, and some other means for the tunnel. At the moment the noTLScheck option is set.&#xA;https://blog.cloudflare.com/automated-origin-ca-for-kubernetes/&#xA;https://blog.cloudflare.com/cloudflare-ca-encryption-origin/&#xA;K3s cloudflared tunnel, check &amp;ldquo;access&amp;rdquo; option.&#xA;Gitea linkThe instance is running using the included DB.</description>
+    </item>
+    <item>
+      <title>Monitoring, Alerting and Auditing</title>
+      <link>//localhost:1313/docs/information-technology/monitoringalertingauditing/</link>
+      <pubDate>Thu, 21 Sep 2023 14:57:41 -0400</pubDate>
+      <guid>//localhost:1313/docs/information-technology/monitoringalertingauditing/</guid>
+      <description>Overview linkThis should be self evident for obvious reasons. Monitoring and review of logs on a production system will provide an understanding of the base level operation of the systems. It may be a good practice to stress the systems while logging and collecting metrics to help define the operating parameters of the functional system. Knowing the limits of the system through testing will help define an alerting system for production monitoring and help define strategist for expanding the capacities of these systems.</description>
+    </item>
+    <item>
+      <title>CoreDNS Troubleshooting</title>
+      <link>//localhost:1313/docs/network/kubernetes/corednstroubleshooting/</link>
+      <pubDate>Thu, 21 Sep 2023 14:28:17 -0400</pubDate>
+      <guid>//localhost:1313/docs/network/kubernetes/corednstroubleshooting/</guid>
+      <description>Test Cluster linkRun a quick Alpine instance for debugging:&#xA;kubectl run -it --rm --restart=Never alpine --image=alpine sh Ping gateway on another node 3: eth0@if21: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN&amp;gt; mtu 1450 qdisc noqueue state UP link/ether aa:82:29:16:75:a2 brd ff:ff:ff:ff:ff:ff inet 10.42.1.3/24 scope global eth0 valid_lft forever preferred_lft forever inet6 fe80::a882:29ff:fe16:75a2/64 scope link valid_lft forever preferred_lft forever ping 10.42.2.1 PING 10.42.2.1 (10.42.2.1): 56 data bytes 64 bytes from 10.42.2.1: seq=0 ttl=63 time=55.057 ms Lookup external host name / # nslookup slashdot.</description>
+    </item>
+    <item>
+      <title>Gitea Drone Intergration</title>
+      <link>//localhost:1313/docs/network/giteadroneintergration/</link>
+      <pubDate>Thu, 21 Sep 2023 14:24:55 -0400</pubDate>
+      <guid>//localhost:1313/docs/network/giteadroneintergration/</guid>
+      <description>Token: Create OAuth Application Client ID: Client Secret: Application Name: drone Redirect URI: http://derosa.k3s.6browns.org/login Create a shared secret openssl rand -hex 16 &amp;lt;return value&amp;gt; Download drone on Derosa docker pull drone/drone Start server DRONE_GITEA_CLIENT_ID=&amp;lt;ID&amp;gt; DRONE_GITEA_CLIENT_SECRET=&amp;lt;secret&amp;gt; DRONE_GITEA_SERVER=https://trek.6browns.org DRONE_RPC_SECRET=&amp;lt;other secret&amp;gt; DRONE_SERVER_HOST=derosa.6browns.org DRONE_SERVER_PROTO=http docker run \ --volume=/mnt/HD1/var/lib/drone:/data \ --env=DRONE_GITEA_SERVER={{DRONE_GITEA_SERVER}} \ --env=DRONE_GITEA_CLIENT_ID={{DRONE_GITEA_CLIENT_ID}} \ --env=DRONE_GITEA_CLIENT_SECRET={{DRONE_GITEA_CLIENT_SECRET}} \ --env=DRONE_RPC_SECRET={{DRONE_RPC_SECRET}} \ --env=DRONE_SERVER_HOST={{DRONE_SERVER_HOST}} \ --env=DRONE_SERVER_PROTO={{DRONE_SERVER_PROTO}} \ --publish=80:80 \ --publish=443:443 \ --restart=always \ --detach=true \ --name=drone \ drone/drone Create Kubernette Runners rbac drone service account Example deployment failed time=&amp;#34;2020-03-09T15:32:57Z&amp;#34; level=error msg=&amp;#34;cannot ping the remote server&amp;#34; error=&amp;#34;Post https://drone.</description>
+    </item>
+    <item>
+      <title>6browns.org Web Routing</title>
+      <link>//localhost:1313/docs/network/6brownswebrouting/</link>
+      <pubDate>Thu, 21 Sep 2023 14:19:39 -0400</pubDate>
+      <guid>//localhost:1313/docs/network/6brownswebrouting/</guid>
+      <description>Tasks link Register wildcard record with DynDNS *.6browns.org -&amp;gt; public How about DNS authentication for LetsEncrypt Port forward http and https to Trek internal IP Configure Caddy2 to reverse proxy appropriate hostnames This assumes Caddy works as an HTTPS endpoint and proxies the backend, much like what I have traditionally done with NGINX and WordPress gitea.6browns.org { # Templates give static sites some dynamic features #templates # Compress responses according to Accept-Encoding headers encode gzip zstd # Make HTML file extension optional try_files {path}.</description>
+    </item>
+    <item>
+      <title>ITGlue</title>
+      <link>//localhost:1313/docs/information-technology/itglue/</link>
+      <pubDate>Thu, 21 Sep 2023 14:01:01 -0400</pubDate>
+      <guid>//localhost:1313/docs/information-technology/itglue/</guid>
+      <description>From: &amp;ldquo;9 ITGlue Alternatives for IT Documentation That All MSPs Should Consider&amp;rdquo;&#xA;ITGlue is a collaborative, cloud-based IT documentation platform created to help MSPs standardize documentation, create knowledge bases, manage passwords and track devices.&#xA;There seem to be some canned process workflow for typical MSP (Managed Service Provider) tasks, they may call this thing &amp;ldquo;Process Street&amp;rdquo;. It looks like Process Street is a separate application that will integrate with ITGlue.</description>
+    </item>
+    <item>
+      <title>Pine64 ClusterBoard - Part1</title>
+      <link>//localhost:1313/docs/network/pine64clusterboardpart1/</link>
+      <pubDate>Thu, 21 Sep 2023 13:58:39 -0400</pubDate>
+      <guid>//localhost:1313/docs/network/pine64clusterboardpart1/</guid>
+      <description>Console Connection linkMost of this information was obtained from the Pine64 Forum the diagram / images were no longer stored on the forum and I&amp;rsquo;ve added information for clarity.&#xA;I&amp;rsquo;m using the SERIAL CONSOLE “Woodpecker” Edition board to connect to the ClusterBoard&amp;rsquo;s UART GPIO slot&#xA;Woodpecker ClusterBoard slot GPIO (7 slots) GND Brown Pin 6 GND RTX Red Pin 7 PL10 G362 (E) S_PWM TXD White Pin 8 P8 PB0 G32 (E) UART2_TX Plug &amp;ldquo;Woodpecker&amp;rdquo; into an available USB port on a workstation.</description>
+    </item>
+    <item>
+      <title>ONPSense Reverse Proxy</title>
+      <link>//localhost:1313/docs/network/onpsensereverseproxy/</link>
+      <pubDate>Thu, 21 Sep 2023 13:51:38 -0400</pubDate>
+      <guid>//localhost:1313/docs/network/onpsensereverseproxy/</guid>
+      <description>Overview linkAll ingress into the BFNet network will have to enter the network from the public interface to the OPNsense gateway (browngw.6browns.org). The NGINX reverse proxy will need to &amp;ldquo;route&amp;rdquo; connections based on the host information on incoming packets, since all packets will be routed via IP to the public interface. The documentation for OPNsense identifies four TLS configurations&#xA;Breaking up the connection on the firewall (down- and upstream are using TLS) Decrypt an encrypted upstream (downstream plain, upstream TLS protected) TLS Offloading (downstream is TLS protected, upstream is plain) TLS Passthough The first and fourth options seem to be the most practicable, while option two (downstream plain) will be problematic with modern browsers that expect to connect securely.</description>
     </item>
   </channel>
 </rss>

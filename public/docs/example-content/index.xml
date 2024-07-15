@@ -13,14 +13,14 @@
       <link>//localhost:1313/docs/example-content/code/</link>
       <pubDate>Mon, 22 May 2023 00:44:31 +0100</pubDate>
       <guid>//localhost:1313/docs/example-content/code/</guid>
-      <description>Code Block Examples Code block language examples&#xA;Go package main import &amp;#34;fmt&amp;#34; func main() { fmt.Println(&amp;#34;hello world&amp;#34;) } HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;My First Heading&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;My first paragraph.&amp;lt;/p&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; Markdown # H1 heading **Some bold text** *Italic text example* </description>
+      <description>Code Block Examples linkCode block language examples&#xA;Go link package main import &amp;#34;fmt&amp;#34; func main() { fmt.Println(&amp;#34;hello world&amp;#34;) } HTML link &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;My First Heading&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;My first paragraph.&amp;lt;/p&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; Markdown link # H1 heading **Some bold text** *Italic text example* </description>
     </item>
     <item>
       <title>Mermaid</title>
       <link>//localhost:1313/docs/example-content/mermaid/</link>
       <pubDate>Fri, 08 Sep 2023 05:12:51 +0100</pubDate>
       <guid>//localhost:1313/docs/example-content/mermaid/</guid>
-      <description>Flowchart flowchart LR A[Hard] --&amp;gt;|Text| B(Round) B --&amp;gt; C{Decision} C --&amp;gt;|One| D[Result 1] C --&amp;gt;|Two| E[Result 2] Sequence diagram sequenceDiagram Alice-&amp;gt;&amp;gt;John: Hello John, how are you? loop Healthcheck John-&amp;gt;&amp;gt;John: Fight against hypochondria end Note right of John: Rational thoughts! John--&amp;gt;&amp;gt;Alice: Great! John-&amp;gt;&amp;gt;Bob: How about you? Bob--&amp;gt;&amp;gt;John: Jolly good! Gnatt Chart gantt section Section Completed :done, des1, 2014-01-06,2014-01-08 Active :active, des2, 2014-01-07, 3d Parallel 1 : des3, after des1, 1d Parallel 2 : des4, after des1, 1d Parallel 3 : des5, after des3, 1d Parallel 4 : des6, after des4, 1d Class diagram classDiagram Class01 &amp;lt;|-- AveryLongClass : Cool &amp;lt;&amp;lt;interface&amp;gt;&amp;gt; Class01 Class09 --&amp;gt; C2 : Where am i?</description>
+      <description>Flowchart linkflowchart LR A[Hard] --&amp;gt;|Text| B(Round) B --&amp;gt; C{Decision} C --&amp;gt;|One| D[Result 1] C --&amp;gt;|Two| E[Result 2] Sequence diagram linksequenceDiagram Alice-&amp;gt;&amp;gt;John: Hello John, how are you? loop Healthcheck John-&amp;gt;&amp;gt;John: Fight against hypochondria end Note right of John: Rational thoughts! John--&amp;gt;&amp;gt;Alice: Great! John-&amp;gt;&amp;gt;Bob: How about you? Bob--&amp;gt;&amp;gt;John: Jolly good! Gnatt Chart linkgantt section Section Completed :done, des1, 2014-01-06,2014-01-08 Active :active, des2, 2014-01-07, 3d Parallel 1 : des3, after des1, 1d Parallel 2 : des4, after des1, 1d Parallel 3 : des5, after des3, 1d Parallel 4 : des6, after des4, 1d Class diagram linkclassDiagram Class01 &amp;lt;|-- AveryLongClass : Cool &amp;lt;&amp;lt;interface&amp;gt;&amp;gt; Class01 Class09 --&amp;gt; C2 : Where am i?</description>
     </item>
   </channel>
 </rss>

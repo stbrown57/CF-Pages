@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+    <title>Pine64 ClusterBoard - Part1 | BFNet Docs</title>
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Documentation, Hugo, Hugo Theme, Bootstrap" />
+    <meta name="author" content="Colin Wilson - Lotus Labs" />
+    <meta name="email" content="support@aigis.uk" />
+    <meta name="website" content="https://lotusdocs.dev" />
+    <meta name="Version" content="v0.1.0" />
+    
+    <link rel="icon" href="//localhost:1313/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="//localhost:1313/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="//localhost:1313/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="manifest" crossorigin="use-credentials" href="//localhost:1313/site.webmanifest">
+<meta property="og:title" content="Pine64 ClusterBoard - Part1" />
+<meta property="og:description" content="Console Connection linkMost of this information was obtained from the Pine64 Forum the diagram / images were no longer stored on the forum and I&rsquo;ve added information for clarity.
+I&rsquo;m using the SERIAL CONSOLE “Woodpecker” Edition board to connect to the ClusterBoard&rsquo;s UART GPIO slot
+Woodpecker ClusterBoard slot GPIO (7 slots) GND Brown Pin 6 GND RTX Red Pin 7 PL10 G362 (E) S_PWM TXD White Pin 8 P8 PB0 G32 (E) UART2_TX Plug &ldquo;Woodpecker&rdquo; into an available USB port on a workstation." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//localhost:1313/docs/network/pine64clusterboardpart1/" /><meta property="og:image" content="//localhost:1313/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_915977356035266243.png"/><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2023-09-21T13:58:39-04:00" />
+<meta property="article:modified_time" content="2023-09-21T13:58:39-04:00" /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="//localhost:1313/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_915977356035266243.png"/>
+<meta name="twitter:title" content="Pine64 ClusterBoard - Part1"/>
+<meta name="twitter:description" content="Console Connection linkMost of this information was obtained from the Pine64 Forum the diagram / images were no longer stored on the forum and I&rsquo;ve added information for clarity.
+I&rsquo;m using the SERIAL CONSOLE “Woodpecker” Edition board to connect to the ClusterBoard&rsquo;s UART GPIO slot
+Woodpecker ClusterBoard slot GPIO (7 slots) GND Brown Pin 6 GND RTX Red Pin 7 PL10 G362 (E) S_PWM TXD White Pin 8 P8 PB0 G32 (E) UART2_TX Plug &ldquo;Woodpecker&rdquo; into an available USB port on a workstation."/>
+
+    
+    
+    
+            
+                <script type="text/javascript" src="//localhost:1313/docs/js/flexsearch.bundle.js"></script>
+            
+        
+    
+    
+
+    <link rel="stylesheet" href="/docs/scss/style.css" crossorigin="anonymous">
+    
+    
+    </head><body>
+        <div class="content">
+            <div class="page-wrapper toggled">
+<nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-brand">
+        <a href='/' aria-label="HomePage" alt="HomePage">
+            
+                <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250"><path d="m143,39.5c-18,0-18,18-18,18,0,0,0-18-18-18H22c-2.76,0-5,2.24-5,5v143c0,2.76,2.24,5,5,5h76c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h76c2.76,0,5-2.24,5-5V44.5c0-2.76-2.24-5-5-5h-85Zm63,123.5c0,1.38-1.12,2.5-2.5,2.5h-60.5c-18,0-18,18-18,18,0,0,0-18-18-18h-60.5c-1.38,0-2.5-1.12-2.5-2.5v-94c0-1.38,1.12-2.5,2.5-2.5h51.5c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h51.5c1.38,0,2.5,1.12,2.5,2.5v94Z" style="fill:#06f;"/></svg>
+            
+        </a>
+    </div>
+    <div class="sidebar-content" style="height: calc(100% - 131px);">
+        <ul class="sidebar-menu">
+            
+                
+                
+                    
+                    
+                        <li class="sidebar-dropdown no-icon current active">
+                            <button class="btn">
+                                Network
+                            </button>
+                            <div class="sidebar-submenu d-block">
+                                <ul>
+                                    
+                                        
+                                        
+                                            <li class="sidebar-dropdown nested no-icon ">
+                                                <button class="btn">
+                                                    Kubernetes
+                                                </button>
+                                                <div class="sidebar-submenu ">
+                                                    <ul>
+                                                        
+                                                            
+                                                            
+                                                                <li class=" no-icon"><a class="sidebar-nested-link" href="//localhost:1313/docs/network/kubernetes/k3srebuild/">K3s Rebuild</a></li>
+                                                            
+                                                        
+                                                            
+                                                            
+                                                                <li class=" no-icon"><a class="sidebar-nested-link" href="//localhost:1313/docs/network/kubernetes/kubernetecluster/">Kubernete Cluster</a></li>
+                                                            
+                                                        
+                                                            
+                                                            
+                                                                <li class=" no-icon"><a class="sidebar-nested-link" href="//localhost:1313/docs/network/kubernetes/cloudflarekubernetes/">Cloudflare and Kubernetes</a></li>
+                                                            
+                                                        
+                                                            
+                                                            
+                                                                <li class=" no-icon"><a class="sidebar-nested-link" href="//localhost:1313/docs/network/kubernetes/corednstroubleshooting/">CoreDNS Troubleshooting</a></li>
+                                                            
+                                                        
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="//localhost:1313/docs/network/giteadroneintergration/">Gitea Drone Intergration</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="//localhost:1313/docs/network/6brownswebrouting/">6browns.org Web Routing</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class="current no-icon"><a class="sidebar-nested-link" href="//localhost:1313/docs/network/pine64clusterboardpart1/">Pine64 ClusterBoard - Part1</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="//localhost:1313/docs/network/onpsensereverseproxy/">ONPSense Reverse Proxy</a></li>
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    
+                
+                    
+                    
+                        <li class="sidebar-dropdown no-icon ">
+                            <button class="btn">
+                                Example Content
+                            </button>
+                            <div class="sidebar-submenu ">
+                                <ul>
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="//localhost:1313/docs/example-content/code/">Code</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="//localhost:1313/docs/example-content/mermaid/">Mermaid</a></li>
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    
+                
+                    
+                    
+                        <li class="sidebar-dropdown no-icon ">
+                            <button class="btn">
+                                Information Technology
+                            </button>
+                            <div class="sidebar-submenu ">
+                                <ul>
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="//localhost:1313/docs/information-technology/kubernetessidecar/">Kubernetes Sidecar</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="//localhost:1313/docs/information-technology/monitoringalertingauditing/">Monitoring, Alerting and Auditing</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="//localhost:1313/docs/information-technology/itglue/">ITGlue</a></li>
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    
+                
+                    
+                    
+                        <li class="sidebar-dropdown no-icon ">
+                            <button class="btn">
+                                Cycling
+                            </button>
+                            <div class="sidebar-submenu ">
+                                <ul>
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="//localhost:1313/docs/cycling/2023-09-19-cannonball2023/">Cannonball</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="//localhost:1313/docs/cycling/b2024-06-30-bike/">Bike</a></li>
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    
+                
+            
+        </ul>
+        
+    </div>
+    
+        <ul class="sidebar-footer list-unstyled mb-0">
+            
+        </ul>
+    
+</nav>
+
+                    <main class="page-content bg-transparent">
+                        
+<div id="top-header" class="top-header d-print-none">
+    <div class="header-bar d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+            <a href='/' class="logo-icon me-3" aria-label="HomePage" alt="HomePage">
+                <div class="small">
+                    
+                            <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250"><path d="m143,39.5c-18,0-18,18-18,18,0,0,0-18-18-18H22c-2.76,0-5,2.24-5,5v143c0,2.76,2.24,5,5,5h76c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h76c2.76,0,5-2.24,5-5V44.5c0-2.76-2.24-5-5-5h-85Zm63,123.5c0,1.38-1.12,2.5-2.5,2.5h-60.5c-18,0-18,18-18,18,0,0,0-18-18-18h-60.5c-1.38,0-2.5-1.12-2.5-2.5v-94c0-1.38,1.12-2.5,2.5-2.5h51.5c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h51.5c1.38,0,2.5,1.12,2.5,2.5v94Z" style="fill:#06f;"/></svg>
+                    
+                </div>
+                <div class="big">
+                    
+                            <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250"><path d="m143,39.5c-18,0-18,18-18,18,0,0,0-18-18-18H22c-2.76,0-5,2.24-5,5v143c0,2.76,2.24,5,5,5h76c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h76c2.76,0,5-2.24,5-5V44.5c0-2.76-2.24-5-5-5h-85Zm63,123.5c0,1.38-1.12,2.5-2.5,2.5h-60.5c-18,0-18,18-18,18,0,0,0-18-18-18h-60.5c-1.38,0-2.5-1.12-2.5-2.5v-94c0-1.38,1.12-2.5,2.5-2.5h51.5c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h51.5c1.38,0,2.5,1.12,2.5,2.5v94Z" style="fill:#06f;"/></svg>
+                    
+                </div>
+            </a>
+            <button id="close-sidebar" class="btn btn-icon btn-soft">
+                <span class="material-icons size-20 menu-icon align-middle">menu</span>
+            </button>
+            
+            
+                    
+                    <button id="flexsearch-button" class="ms-3 btn btn-soft" data-bs-toggle="collapse" data-bs-target="#FlexSearchCollapse" aria-expanded="false" aria-controls="FlexSearchCollapse">
+                        <span class="material-icons size-20 menu-icon align-middle">search</span>
+                        <span class="flexsearch-button-placeholder ms-1 me-2 d-none d-sm-block">Search</span>
+                        <div class="d-none d-sm-block">
+                            <span class="flexsearch-button-keys">
+                                <kbd class="flexsearch-button-cmd-key">
+                                    <svg width="44" height="15"><path d="M2.118,11.5A1.519,1.519,0,0,1,1,11.042,1.583,1.583,0,0,1,1,8.815a1.519,1.519,0,0,1,1.113-.458h.715V6.643H2.118A1.519,1.519,0,0,1,1,6.185,1.519,1.519,0,0,1,.547,5.071,1.519,1.519,0,0,1,1,3.958,1.519,1.519,0,0,1,2.118,3.5a1.519,1.519,0,0,1,1.114.458A1.519,1.519,0,0,1,3.69,5.071v.715H5.4V5.071A1.564,1.564,0,0,1,6.976,3.5,1.564,1.564,0,0,1,8.547,5.071,1.564,1.564,0,0,1,6.976,6.643H6.261V8.357h.715a1.575,1.575,0,0,1,1.113,2.685,1.583,1.583,0,0,1-2.227,0A1.519,1.519,0,0,1,5.4,9.929V9.214H3.69v.715a1.519,1.519,0,0,1-.458,1.113A1.519,1.519,0,0,1,2.118,11.5Zm0-.857a.714.714,0,0,0,.715-.714V9.214H2.118a.715.715,0,1,0,0,1.429Zm4.858,0a.715.715,0,1,0,0-1.429H6.261v.715a.714.714,0,0,0,.715.714ZM3.69,8.357H5.4V6.643H3.69ZM2.118,5.786h.715V5.071a.714.714,0,0,0-.715-.714.715.715,0,0,0-.5,1.22A.686.686,0,0,0,2.118,5.786Zm4.143,0h.715a.715.715,0,0,0,.5-1.22.715.715,0,0,0-1.22.5Z" fill="currentColor"></path><path d="M12.4,11.475H11.344l3.879-7.95h1.056Z" fill="currentColor"></path><path d="M25.073,5.384l-.864.576a2.121,2.121,0,0,0-1.786-.923,2.207,2.207,0,0,0-2.266,2.326,2.206,2.206,0,0,0,2.266,2.325,2.1,2.1,0,0,0,1.782-.918l.84.617a3.108,3.108,0,0,1-2.622,1.293,3.217,3.217,0,0,1-3.349-3.317,3.217,3.217,0,0,1,3.349-3.317A3.046,3.046,0,0,1,25.073,5.384Z" fill="currentColor"></path><path d="M30.993,5.142h-2.07v5.419H27.891V5.142h-2.07V4.164h5.172Z" fill="currentColor"></path><path d="M34.67,4.164c1.471,0,2.266.658,2.266,1.851,0,1.087-.832,1.809-2.134,1.855l2.107,2.691h-1.28L33.591,7.87H33.07v2.691H32.038v-6.4Zm-1.6.969v1.8h1.572c.832,0,1.22-.3,1.22-.918s-.411-.882-1.22-.882Z" fill="currentColor"></path><path d="M42.883,10.561H38.31v-6.4h1.033V9.583h3.54Z" fill="currentColor"></path></svg>
+                                </kbd>
+                                <kbd class="flexsearch-button-key">
+                                    <svg width="15" height="15"><path d="M5.926,12.279H4.41L9.073,2.721H10.59Z" fill="currentColor"/></svg>
+                                </kbd>
+                            </span>
+                        </div>
+                    </button>
+                
+            </div>
+
+        <div class="d-flex align-items-center">
+            <ul class="list-unstyled mb-0">
+                
+            </ul>
+            
+        </div>
+    </div>
+    
+    
+            <div class="collapse" id="FlexSearchCollapse">
+                <div class="flexsearch-container">
+                    <div class="flexsearch-keymap">
+                        <li>
+                            <kbd class="flexsearch-button-cmd-key"><svg width="15" height="15" aria-label="Arrow down" role="img"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"><path d="M7.5 3.5v8M10.5 8.5l-3 3-3-3"></path></g></svg></kbd>
+                            <kbd class="flexsearch-button-cmd-key"><svg width="15" height="15" aria-label="Arrow up" role="img"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"><path d="M7.5 11.5v-8M10.5 6.5l-3-3-3 3"></path></g></svg></kbd>
+                            <span class="flexsearch-key-label">to navigate</span>
+                        </li>
+                        <li>
+                            <kbd class="flexsearch-button-cmd-key"><svg width="15" height="15" aria-label="Enter key" role="img"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"><path d="M12 3.53088v3c0 1-1 2-2 2H4M7 11.53088l-3-3 3-3"></path></g></svg></kbd>
+                            <span class="flexsearch-key-label">to select</span>
+                        </li>
+                        <li>
+                            <kbd class="flexsearch-button-cmd-key"><svg width="15" height="15" aria-label="Escape key" role="img"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"><path d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956"></path></g></svg></kbd>
+                            <span class="flexsearch-key-label">to close</span>
+                        </li>
+                    </div>
+                    <form class="flexsearch position-relative flex-grow-1 ms-2 me-2">
+                        <div class="d-flex flex-row">
+                            <input id="flexsearch" class="form-control" type="search" placeholder="Search" aria-label="Search" autocomplete="off">
+                            <button id="hideFlexsearch" type="button" class="ms-2 btn btn-soft">
+                                cancel
+                            </button>
+                        </div>
+                        <div id="suggestions" class="shadow rounded-1 d-none"></div>
+                    </form>
+                </div>
+            </div>
+        
+    
+    
+</div>
+
+                            <div class="container-fluid">
+                                <div class="layout-spacing">
+                                    
+                                        <div class="d-md-flex justify-content-between align-items-center"><nav aria-label="breadcrumb" class="d-inline-block pb-2 mt-1 mt-sm-0">
+    <ul id="breadcrumbs" class="breadcrumb bg-transparent mb-0" itemscope itemtype="https://schema.org/BreadcrumbList">
+        
+            
+                <li class="breadcrumb-item text-capitalize active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="/docs/">
+                        <i class="material-icons size-20 align-text-bottom" itemprop="name">Home</i>
+                    </a>
+                    <meta itemprop="position" content='1' />
+                </li>
+            
+            
+                <li class="breadcrumb-item text-capitalize" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="/docs/network/">
+                        <span itemprop="name">Network</span>
+                    </a>
+                    <meta itemprop="position" content='2' />
+                </li>
+            
+        
+            <li class="breadcrumb-item text-capitalize active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span itemprop="name">Pine64 ClusterBoard - Part1</span>
+                <meta itemprop="position" content='3' />
+            </li>
+        
+    </ul>
+</nav></div>
+                                    
+                                    <div class="row flex-xl-nowrap">
+                                        
+                                        <div class="docs-toc col-xl-3    d-xl-block"><toc>
+    <div class="fw-bold text-uppercase mb-2">On this page</div>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#console-connection">Console Connection</a></li>
+    <li><a href="#boot-image">Boot Image</a>
+      <ul>
+        <li><a href="#alpine">Alpine </a></li>
+        <li><a href="#armbian">Armbian</a></li>
+        <li><a href="#k3os">K3os</a></li>
+        <li><a href="#rio">Rio</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </toc></div>
+                                        
+                                        
+                                        <div class="docs-toc-mobile    d-print-none d-xl-none">
+                                            <button id="toc-dropdown-btn" class="btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
+                                                Table of Contents
+                                            </button>
+<nav id="toc-mobile">
+  <ul class="dropdown-menu">
+    <li><a href="#console-connection">Console Connection</a></li>
+    <li><a href="#boot-image">Boot Image</a>
+      <ul>
+        <li><a href="#alpine">Alpine </a></li>
+        <li><a href="#armbian">Armbian</a></li>
+        <li><a href="#k3os">K3os</a></li>
+        <li><a href="#rio">Rio</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+                                        <div class="docs-content col-12 col-xl-9 mt-0">
+                                            <div class="mb-0 d-flex">
+                                                
+                                                <h1 class="content-title mb-0">
+                                                    Pine64 ClusterBoard - Part1
+                                                    
+                                                        <span class="badge bg-default fs-6 mb-1 align-middle">DRAFT</span>
+                                                    
+                                                </h1>
+                                            </div>
+                                            
+                                            <div id="content" class="main-content" >
+                                                
+    
+    <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
+        <h2 id="console-connection">Console Connection <a href="#console-connection" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h2><p>Most of this information was obtained from the <a href="https://forum.pine64.org/showthread.php?tid=7285" rel="external" target="_blank">Pine64 Forum<svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 5c-.552 0-1-.448-1-1s.448-1 1-1h6c.552 0 1 .448 1 1v6c0 .552-.448 1-1 1s-1-.448-1-1v-3.586l-7.293 7.293c-.391.39-1.024.39-1.414 0-.391-.391-.391-1.024 0-1.414l7.293-7.293h-3.586zm-9 2c-.552 0-1 .448-1 1v11c0 .552.448 1 1 1h11c.552 0 1-.448 1-1v-4.563c0-.552.448-1 1-1s1 .448 1 1v4.563c0 1.657-1.343 3-3 3h-11c-1.657 0-3-1.343-3-3v-11c0-1.657 1.343-3 3-3h4.563c.552 0 1 .448 1 1s-.448 1-1 1h-4.563z"/></svg></a>  the diagram / images were no longer stored on the forum and I&rsquo;ve added information for clarity.</p>
+<p>I&rsquo;m using the <a href="https://store.pine64.org/?product=padi-serial-console" rel="external" target="_blank">SERIAL CONSOLE “Woodpecker” Edition<svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 5c-.552 0-1-.448-1-1s.448-1 1-1h6c.552 0 1 .448 1 1v6c0 .552-.448 1-1 1s-1-.448-1-1v-3.586l-7.293 7.293c-.391.39-1.024.39-1.414 0-.391-.391-.391-1.024 0-1.414l7.293-7.293h-3.586zm-9 2c-.552 0-1 .448-1 1v11c0 .552.448 1 1 1h11c.552 0 1-.448 1-1v-4.563c0-.552.448-1 1-1s1 .448 1 1v4.563c0 1.657-1.343 3-3 3h-11c-1.657 0-3-1.343-3-3v-11c0-1.657 1.343-3 3-3h4.563c.552 0 1 .448 1 1s-.448 1-1 1h-4.563z"/></svg></a> board to connect to the ClusterBoard&rsquo;s UART GPIO slot</p>
+<table>
+<thead>
+<tr>
+<th>Woodpecker</th>
+<th>ClusterBoard slot GPIO (7 slots)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GND Brown</td>
+<td>Pin 6 GND</td>
+</tr>
+<tr>
+<td>RTX Red</td>
+<td>Pin 7 PL10 G362 (E) S_PWM</td>
+</tr>
+<tr>
+<td>TXD White</td>
+<td>Pin 8 	P8 PB0 G32 (E) UART2_TX</td>
+</tr>
+</tbody>
+</table>
+<p>Plug &ldquo;Woodpecker&rdquo; into an available USB port on a workstation.  Identify the device /dev/ttyUSB#, and connect a Screen instance:</p>
+
+
+    
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>screen /dev/ttyUSB0 <span style="color:#ae81ff">115200</span></span></span></code></pre></div>
+<p>Power on the ClusterBoard, it looks like a SD card is required to begin the boot process.  The console should display the boot log as the process proceeds.  In my case the Armbian image did not boot.</p>
+<h2 id="boot-image">Boot Image <a href="#boot-image" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h2><p>I initially I tried an Armbian Buster image for the <a href="https://www.armbian.com/sopine-a64/" rel="external" target="_blank">Sopine64 board<svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 5c-.552 0-1-.448-1-1s.448-1 1-1h6c.552 0 1 .448 1 1v6c0 .552-.448 1-1 1s-1-.448-1-1v-3.586l-7.293 7.293c-.391.39-1.024.39-1.414 0-.391-.391-.391-1.024 0-1.414l7.293-7.293h-3.586zm-9 2c-.552 0-1 .448-1 1v11c0 .552.448 1 1 1h11c.552 0 1-.448 1-1v-4.563c0-.552.448-1 1-1s1 .448 1 1v4.563c0 1.657-1.343 3-3 3h-11c-1.657 0-3-1.343-3-3v-11c0-1.657 1.343-3 3-3h4.563c.552 0 1 .448 1 1s-.448 1-1 1h-4.563z"/></svg></a>.  I got output, but the system ultimately ended up in the uboot environment.  The first step in the diagnostic process is capturing the boot log messages for a little more detail, this will most likely be done with screen.  There appear to be three possible images / systems that may be possible to boot.  The most likely image Armbian Sopine, and, possibility Alpine. Ultimately K3os with replace the root partition image.</p>
+<p>ARM64 images seem to include DTB files that I believe define the components need for particular boards.  The Armbian image includes the file &ldquo;sun50i-a64-sophie-baseboard.dtb&rdquo; this certainly looks encouraging.</p>
+<h3 id="alpine">Alpine  <a href="#alpine" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>Most of the package for the K3os install are from this disro, so it may be the best option for a bootable kernel.</p>
+<h3 id="armbian">Armbian <a href="#armbian" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>This is the most likely bootable image.  The image booted with not network, this may be a known issue. Resetting the board and reconnecting the network connection seem to resolve the problem.  There maybe some I/O errors on the mSD card.</p>
+<p>I&rsquo;ve used a few combinations of images and techniques for  the boot process, however many have failed somewhere alone the line.  This is what I have so far:</p>
+<ul>
+<li>sopine1 is up using Armbian, but I don&rsquo;t remember which image. (Probably Bionic)</li>
+<li>sopine0<br>
+Armbian Bionic image for Pine64so on an mSSD.  This seems to boot.  The same image on the eMMC hangs at &ldquo;Starting kernel&hellip;&rdquo;.  It looks like U-Boot is working but &ldquo;boot.scr&rdquo; seems to be incorrect.</li>
+</ul>
+<p>Another option for the base system seems to be the <a href="https://wiki.pine64.org/index.php/SOPINE_Software_Release#OpenEmbedded.2FYocto_Images" rel="external" target="_blank">OpenEnbedded<svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 5c-.552 0-1-.448-1-1s.448-1 1-1h6c.552 0 1 .448 1 1v6c0 .552-.448 1-1 1s-1-.448-1-1v-3.586l-7.293 7.293c-.391.39-1.024.39-1.414 0-.391-.391-.391-1.024 0-1.414l7.293-7.293h-3.586zm-9 2c-.552 0-1 .448-1 1v11c0 .552.448 1 1 1h11c.552 0 1-.448 1-1v-4.563c0-.552.448-1 1-1s1 .448 1 1v4.563c0 1.657-1.343 3-3 3h-11c-1.657 0-3-1.343-3-3v-11c0-1.657 1.343-3 3-3h4.563c.552 0 1 .448 1 1s-.448 1-1 1h-4.563z"/></svg></a> build sysetm.</p>
+<h3 id="k3os">K3os <a href="#k3os" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>Ultimately this is the image that should be installed in the cluster and will be managed by the K3s system, but it looks like it will require a bootable kernel for installation.</p>
+<p>Running the following on a bootable Armbian images seems to have worked.  There is no console messages once the image switches to the root partition, and no tty console, however ssh with the configured rancher user (config.yaml) worked.</p>
+
+
+    
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -sfL https://github.com/rancher/k3os/releases/download/v0.8.0/k3os-rootfs-arm64.tar.gz| tar zxvf - --strip-components<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> -C /
+</span></span><span style="display:flex;"><span>cp myconfig.yaml /k3os/system/config.yaml
+</span></span><span style="display:flex;"><span>sync
+</span></span><span style="display:flex;"><span>reboot -f</span></span></code></pre></div>
+<p>config.yaml</p>
+
+
+    
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">ssh_authorized_keys</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">ssh-rsa &lt;...&gt;= sbrown@bianchi</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">hostname</span>: <span style="color:#ae81ff">sopine#</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">run_cmd</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#e6db74">&#34;echo hi &amp;&amp; echo bye&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">boot_cmd</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#e6db74">&#34;echo hi &amp;&amp; echo bye&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">init_cmd</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#e6db74">&#34;echo hi &amp;&amp; echo bye&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">k3os</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">data_sources</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">cdrom</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">dns_nameservers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">8.8.8.8</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">1.1.1.1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ntp_servers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">0.</span><span style="color:#ae81ff">us.pool.ntp.org</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">1.</span><span style="color:#ae81ff">us.pool.ntp.org</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">password</span>: <span style="color:#ae81ff">rancher</span></span></span></code></pre></div>
+<p>Add config.yaml to the worker node&rsquo;s /var/lib/rancher/k3os directory to join the cluster</p>
+
+
+    
+    <pre tabindex="0"><code class="language-conf" data-lang="conf">k3os:
+  server_url: https://sopine0.6browns.org:6443
+  token: K101263c79eda3447e2e671f4f59a99914a989c44684dfc2fd121bbb3cc57d4b0e8::server:0d33b0dbf4499e27bafd7a28cd99a2c8</code></pre>
+<h3 id="rio">Rio <a href="#rio" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>Rio is a layered product on the Rancher K3s infrastructure that provides a micro Platform as a Service (uPaaS).  There are many features included in the platform including Prometheus and Grafana for monitoring.</p>
+
+    </div>
+
+    
+
+    
+                                            </div>
+                                            <div><hr class="doc-hr">
+<div id="doc-nav" class="d-print-none">
+
+	<div class="row flex-xl-nowrap ">
+	<div class="col-sm-6 pt-2 doc-next">
+		<a href="/docs/information-technology/itglue/">
+			<div class="card h-100 my-1">
+				<div class="card-body py-2">
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0"><i class="material-icons align-middle">navigate_before</i> ITGlue</p>
+					
+				</div>
+			</div>
+		</a>
+        </div>
+	<div class="col-sm-6 pt-2 doc-prev">
+		<a class="ms-auto" href="/docs/network/onpsensereverseproxy/">
+			<div class="card h-100 my-1 text-end">
+				<div class="card-body py-2">
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0">ONPSense Reverse Proxy <i class="material-icons align-middle">navigate_next</i></p>
+					
+				</div>
+			</div>
+		</a>
+        </div>
+	</div>
+</div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+<footer class="shadow py-3 d-print-none">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="text-sm-start text-center mx-md-2">
+                    <p class="mb-0">
+                        
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</main>
+            </div>
+        </div>
+
+        
+        
+        <button onclick="topFunction()" id="back-to-top" aria-label="Back to Top Button" class="back-to-top fs-5"><svg width="24" height="24"><path d="M12,10.224l-6.3,6.3L4.32,15.152,12,7.472l7.68,7.68L18.3,16.528Z" style="fill:#fff"/></svg></button>
+        
+        
+
+        
+        
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+    <script src="/docs/js/bootstrap.js" defer></script>
+
+
+    <script type="text/javascript" src="//localhost:1313/docs/js/bundle.js" defer></script>
+        
+
+        
+        <script type="module">
+    var suggestions = document.getElementById('suggestions');
+    var search = document.getElementById('flexsearch');
+
+    const flexsearchContainer = document.getElementById('FlexSearchCollapse');
+
+    const hideFlexsearchBtn = document.getElementById('hideFlexsearch');
+
+    const configObject = { toggle: false }
+    const flexsearchContainerCollapse = new Collapse(flexsearchContainer, configObject) 
+
+    if (search !== null) {
+        document.addEventListener('keydown', inputFocus);
+        flexsearchContainer.addEventListener('shown.bs.collapse', function () {
+            search.focus();
+        });
+        
+        var topHeader = document.getElementById("top-header");
+        document.addEventListener('click', function(elem) {
+            if (!flexsearchContainer.contains(elem.target) && !topHeader.contains(elem.target))
+                flexsearchContainerCollapse.hide();
+        });
+    }
+
+    hideFlexsearchBtn.addEventListener('click', () =>{
+        flexsearchContainerCollapse.hide()
+    })
+
+    function inputFocus(e) {
+        if (e.ctrlKey && e.key === '/') {
+            e.preventDefault();
+            flexsearchContainerCollapse.toggle();
+        }
+        if (e.key === 'Escape' ) {
+            search.blur();
+            
+            flexsearchContainerCollapse.hide();
+        }
+    };
+
+    document.addEventListener('click', function(event) {
+
+    var isClickInsideElement = suggestions.contains(event.target);
+
+    if (!isClickInsideElement) {
+        suggestions.classList.add('d-none');
+    }
+
+    });
+
+    
+
+
+    document.addEventListener('keydown',suggestionFocus);
+
+    function suggestionFocus(e) {
+    const suggestionsHidden = suggestions.classList.contains('d-none');
+    if (suggestionsHidden) return;
+
+    const focusableSuggestions= [...suggestions.querySelectorAll('a')];
+    if (focusableSuggestions.length === 0) return;
+
+    const index = focusableSuggestions.indexOf(document.activeElement);
+
+    if (e.key === "ArrowUp") {
+        e.preventDefault();
+        const nextIndex = index > 0 ? index - 1 : 0;
+        focusableSuggestions[nextIndex].focus();
+    }
+    else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        const nextIndex= index + 1 < focusableSuggestions.length ? index + 1 : index;
+        focusableSuggestions[nextIndex].focus();
+    }
+
+    }
+
+    
+
+
+    (function(){
+
+    var index = new FlexSearch.Document({
+        
+        tokenize: "forward",
+        minlength:  0 ,
+        cache:  100 ,
+        optimize:  true ,
+        document: {
+        id: 'id',
+        store: [
+            "href", "title", "description"
+        ],
+        index: ["title", "description", "content"]
+        }
+    });
+
+
+    
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+    
+
+    
+
+    index.add(
+            {
+                id:  0 ,
+                href: "\/docs\/network\/",
+                title: "Network",
+                description: "",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  1 ,
+                href: "\/docs\/cycling\/2023-09-19-cannonball2023\/",
+                title: "Cannonball",
+                description: "Centuries linkAfter using a Garmin training plan to perpare for the event, I was looking forward to a great ride. The ride was great, but it was a mixed bag and the effectiveness of the training is in question. The table below list key metrics on the history of my century rides. Power meteric, which are more important on a macro level, were only availible for a small number of rides.",
+                content: "Centuries linkAfter using a Garmin training plan to perpare for the event, I was looking forward to a great ride. The ride was great, but it was a mixed bag and the effectiveness of the training is in question. The table below list key metrics on the history of my century rides. Power meteric, which are more important on a macro level, were only availible for a small number of rides. The goal of a century is a 20 mph average speed. Obiously a lot of the factors in achiving that are not related to my age and condition, chief among these factors are riding in a appropriate group, terrain and weather.\nDate Title Distance Time Avg Speed Avg HR Avg Bike Cadence 10/4/2014 Martin’s Tour of Richmond 101.68 5:14:56 19.4 147 83 9/16/2017 Lakes and Grapes 2017 99.97 5:28:42 18.2 130 75 6/8/2019 Lakes and Grapes 2019 99.9 5:29:37 18.2 125 72 9/25/2016 Cannonball 2016 100.76 5:33:26 18.1 130 73 9/16/2023 Cannonball 2023 107.49 6:00:08 17.9 132 74 9/28/2019 Cannonball 2019 99.85 5:37:45 17.7 131 75 9/24/2017 Cannonball Century 2017 100.86 5:41:17 17.7 136 72 9/8/2012 Lake and Grapes Century 106.17 6:00:31 17.7 128 71 9/6/2014 Lakes and Grapes 2014 100.4 5:46:07 17.4 142 81 9/30/2018 Stafford County Road Cycling 100.65 5:49:06 17.3 128 72 9/10/2016 Lakes and Grapes 2016 100.04 5:50:39 17.1 139 71 9/29/2012 Organized with Ben King 101.2 6:16:07 16.1 119 71 9/7/2013 Lakes and Grapes 2013 102.03 7:21:09 13.9 125 78 Some notes on the results: The top entry was the Tour of Richmond almost ten years ago. In the ride I was with a fast group for about 65 miles at about 21 mph. The final 35 was at about 16.6 mph. The recent ride, 2023, was ranked at 5 of 13, and had many more solo miles.\nCannonball 2023 Edition link I was able to break this ride into eight segments based on significant circumstances.\nSegment One link Stage one was a fast adreniline fuled ride right out of the shute. I moved up toward the front relativly early, and although I did not take a turn in the lead, I spent too much time in the two and three spot for a 66 year old. The group passed the first reststop and broke-up somewhat after a hill. I was in the two spot, and the lead was probally putting out too much power. I decieded to wait for Paul and stick with him. Unfortunatly he stopped at the resetstop and then took a 12 mile deture. I waited for him on the couse quite a while, before going off solo (stage two). I did not know Paul was off in a wrong direction and I waited longer then it would have taken him to get to me, even if he was going slow. The speed was 22.4 for 18 miles, and it cost me an averave power of 191 watts and a heartrate of 133 bpm. I could have gone further in this situation.\nSegment Two link This stage started with a long reset, actually the longest of the ride. This was the time I was waiting for Paul in vein. Given that I rode the next 19 Miles at 18.8 mph at a cost slightly above the first stage, 196 watts and average 135 heartrate, I’m guessing I could have hung with the fast group up to this point. I would typically consider a solo 19 mile ride at 18.8 pretty good all by itself.\nSegment Three link This segment included a missed turn, some time figuring out that we were lost. Paul lead almost all the time and the segment had a slight downgrade after a steep incline. Overall there was zero ellivation. Our speed was 19.4 mph at a power output of 139 watts and a heartrate of 123. This was easy because paul was doing the work.\nSegment Four link This part of the ride was again a solo effort of 17.4 miles at 18.1 mph expending an average of 166 watts and heart rate of 138 bpm. The topology was a slight decline with a few ups and downs. Given the lower power output and higher HR, it appears the ride is wareing on me at this point in the ride. This segment ends at 67 miles.\nSegment Five link I was tagging along with the KoreanVelo group after the previous rest stop. They were averaging 21.7 mph and it blow me up at this point in the ride, pretty stupid. Power average was 162, not terribly high (Zone 2), but the average HR was 143 (Zone 5 Intervals.icu). This section was only 3.8 miles. The power average was moderate, but there were a lot of high power bursts and coasting in the group. At 71 miles and change.\nSegment Six link This is were the previous up and down ride with KoreanVelo took its toll. The next 9.4 miles was riden at a slow speed of 15.4 mph, power was 123 (High Zone 1), and heart rate at 135 (Zone 4). Cadance was also shot, at under 70 rpm. I was cramping and not feeling so good. This was again a solo effort. Ended at about 82 miles.\nSegment Seven link This is simply a continuate of degrigated performance. Speed dropped to a 14.8 mph average, power was down even lower into zone 1 (114), heart rate was down to zone 3 (130) and cadence was still poor, below 70. This ended at about the 94 mile mark.\nSegment Eight link I picked up a group somewhere alon this streach, to get to the finish. I lost contact with the group on the last incline at about 104. The group was pushing the desent and I crampped badly on the incline. Speed was 17.2 power at 121 (Zone 1) and heart rate was zone 3 (131). It looks like the group bought me a little better than 2.4 mph.\nTraining link The plan started on April 2 with a 24 week duration. There was little if any dynamic element to the plan other than the calculated FTP on the Garmin device. I was able to complete most of the workouts. Some of the harder workouts, particularly a zone 4 2x15, were a little too much.\nIt look like things were going well for the first 12 weeks, that is nine week in the base stage and three in the build. Then the build was not happening. This may have been the results of over doing it and a few missed days. I never seemed to get back in the grove, possibly because I was using a static plan. It may be benifical to use the Intervals.icu charts along with the Garmin recommendaions to find the improvement.\n"
+            }
+        );
+    index.add(
+            {
+                id:  2 ,
+                href: "\/docs\/cycling\/b2024-06-30-bike\/",
+                title: "Bike",
+                description: "New Bike Purchase",
+                content: "Update Equipment link My newest bike is the 2010 Specialize Tarmac Comp. It experianced some frame damage about four or five years ago on a vacation in New England. The bike works, but the finish and coating was damaged which maybe leading to questionable integrty of the frame. The drive componants, headset and wheels were replace in 2017 with Shimano 150 7000 componants. It is still riding, but the headset / front end, is lose and may not be repairable. I’ve had good times with the bike, but the frame is probably ready for the landfill.\nMy next bike will problally not be my last, I’m guessing there will be an E-assist in my future retirement years, for now I am looking for a reasonalble bike with electronic shifting and disk brakes. I am beinging to realize that Aero and racing frames look way cool, but they are not going to be worth the money at my level. So I’m looking for an endurance bike. I’ve looked at a few major brands, but the best deal seems to be Canyon CF 7. The CF SLX 8 Aero is a sweet step up.\nDisk Brakes eTap Rival AXP drivechain Alloy Wheelset Weight 8.62 kg (19 lb) $2,999 Disk Brakes eTap Force (+$580) DT Swiss ERC Carbon (+$1,600) Weight 7.86 kg (17.3 lb) Powermeter Hydrolic Brake Levers Carbon Cockpit $5,499 Disk Brakes eTap Rival AXP Weight 8.22 kg (18 lb) DT ARC 1600 Carbon $4,499 "
+            }
+        );
+    index.add(
+            {
+                id:  3 ,
+                href: "\/docs\/example-content\/",
+                title: "Example Content",
+                description: "Example content",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  4 ,
+                href: "\/docs\/example-content\/code\/",
+                title: "Code",
+                description: "Code Block Examples linkCode block language examples Go link package main import \"fmt\" func main() { fmt.Println(\"hello world\") } HTML link \u003c!DOCTYPE html\u003e My First Heading My first paragraph.\nMarkdown link # H1 heading **Some bold text** *Italic text example* ",
+                content: "Code Block Examples linkCode block language examples\nGo link package main import \"fmt\" func main() { fmt.Println(\"hello world\") } HTML link \u003c!DOCTYPE html\u003e \u003chtml\u003e \u003cbody\u003e \u003ch1\u003eMy First Heading\u003c/h1\u003e \u003cp\u003eMy first paragraph.\u003c/p\u003e \u003c/body\u003e \u003c/html\u003e Markdown link # H1 heading **Some bold text** *Italic text example* "
+            }
+        );
+    index.add(
+            {
+                id:  5 ,
+                href: "\/docs\/example-content\/mermaid\/",
+                title: "Mermaid",
+                description: "Example Mermaid diagrams",
+                content: "Flowchart linkflowchart LR A[Hard] --\u003e|Text| B(Round) B --\u003e C{Decision} C --\u003e|One| D[Result 1] C --\u003e|Two| E[Result 2] Sequence diagram linksequenceDiagram Alice-\u003e\u003eJohn: Hello John, how are you? loop Healthcheck John-\u003e\u003eJohn: Fight against hypochondria end Note right of John: Rational thoughts! John--\u003e\u003eAlice: Great! John-\u003e\u003eBob: How about you? Bob--\u003e\u003eJohn: Jolly good! Gnatt Chart linkgantt section Section Completed :done, des1, 2014-01-06,2014-01-08 Active :active, des2, 2014-01-07, 3d Parallel 1 : des3, after des1, 1d Parallel 2 : des4, after des1, 1d Parallel 3 : des5, after des3, 1d Parallel 4 : des6, after des4, 1d Class diagram linkclassDiagram Class01 \u003c|-- AveryLongClass : Cool \u003c\u003e Class01 Class09 --\u003e C2 : Where am i? Class09 --* C3 Class09 --|\u003e Class07 Class07 : equals() Class07 : Object[] elementData Class01 : size() Class01 : int chimp Class01 : int gorilla class Class10 { \u003e\u003eservice\u003e\u003e int id size() } State diagram linkstateDiagram-v2 [*] --\u003e Still Still --\u003e [*] Still --\u003e Moving Moving --\u003e Still Moving --\u003e Crash Crash --\u003e [*] Pie Chart linkpie \"Dogs\" : 386 \"Cats\" : 85.9 \"Rats\" : 15 Git Graph link gitGraph commit commit branch develop checkout develop commit commit checkout main merge develop commit commit Bar chart (using gantt chart) linkgantt title Git Issues - days since last update dateFormat X axisFormat %s section Issue19062 71 : 0, 71 section Issue19401 36 : 0, 36 section Issue193 34 : 0, 34 section Issue7441 9 : 0, 9 section Issue1300 5 : 0, 5 User Journey diagram link journey title My working day section Go to work Make tea: 5: Me Go upstairs: 3: Me Do work: 1: Me, Cat section Go home Go downstairs: 5: Me Sit down: 3: Me C4 diagram linkC4Context title System Context diagram for Internet Banking System Person(customerA, \"Banking Customer A\", \"A customer of the bank, with personal bank accounts.\") Person(customerB, \"Banking Customer B\") Person_Ext(customerC, \"Banking Customer C\") System(SystemAA, \"Internet Banking System\", \"Allows customers to view information about their bank accounts, and make payments.\") Person(customerD, \"Banking Customer D\", \"A customer of the bank, with personal bank accounts.\") Enterprise_Boundary(b1, \"BankBoundary\") { SystemDb_Ext(SystemE, \"Mainframe Banking System\", \"Stores all of the core banking information about customers, accounts, transactions, etc.\") System_Boundary(b2, \"BankBoundary2\") { System(SystemA, \"Banking System A\") System(SystemB, \"Banking System B\", \"A system of the bank, with personal bank accounts.\") } System_Ext(SystemC, \"E-mail system\", \"The internal Microsoft Exchange e-mail system.\") SystemDb(SystemD, \"Banking System D Database\", \"A system of the bank, with personal bank accounts.\") Boundary(b3, \"BankBoundary3\", \"boundary\") { SystemQueue(SystemF, \"Banking System F Queue\", \"A system of the bank, with personal bank accounts.\") SystemQueue_Ext(SystemG, \"Banking System G Queue\", \"A system of the bank, with personal bank accounts.\") } } BiRel(customerA, SystemAA, \"Uses\") BiRel(SystemAA, SystemE, \"Uses\") Rel(SystemAA, SystemC, \"Sends e-mails\", \"SMTP\") Rel(SystemC, customerA, \"Sends e-mails to\") "
+            }
+        );
+    index.add(
+            {
+                id:  6 ,
+                href: "\/docs\/network\/kubernetes\/k3srebuild\/",
+                title: "K3s Rebuild",
+                description: "Remove current cluster link On worker node: sudo /var/local/bin/k3s-agent-uninstall.sh sudo /var/local/bin/k3s-killall.sh sudo rm -R /var/lib/rancher/k3s/agent sudo rm -R /var/lib/rancher/k3s/data sudo rm -R /var/lib/rancher/k3s/server On the master: sudo /var/local/bin/k3s-uninstall.sh sudo /var/local/bin/k3s-killall.sh sudo rm -R /var/lib/rancher/k3s/agent sudo rm -R /var/lib/rancher/k3s/data sudo rm -R /var/lib/rancher/k3s/server …or image a new K3os instance link Burn Armbian image to ssd card Shutdown cluster and remove all modules Image sopine0 install module0 boot …try link Armbian_20.11_Pine64so_bionic_current_5.8.16 No ethernet Armbian_20.",
+                content: "Remove current cluster link On worker node: sudo /var/local/bin/k3s-agent-uninstall.sh sudo /var/local/bin/k3s-killall.sh sudo rm -R /var/lib/rancher/k3s/agent sudo rm -R /var/lib/rancher/k3s/data sudo rm -R /var/lib/rancher/k3s/server On the master: sudo /var/local/bin/k3s-uninstall.sh sudo /var/local/bin/k3s-killall.sh sudo rm -R /var/lib/rancher/k3s/agent sudo rm -R /var/lib/rancher/k3s/data sudo rm -R /var/lib/rancher/k3s/server …or image a new K3os instance link Burn Armbian image to ssd card Shutdown cluster and remove all modules Image sopine0 install module0 boot …try link Armbian_20.11_Pine64so_bionic_current_5.8.16 No ethernet Armbian_20.11.3_Pine64so_focal_current_5.9.14 Modify patch image to enable Ethernet link Find offset fdisk -l sector * start = offset\nsudo mount -o loop,rw,sync,offset= /mnt/img Edit dtb file add delay 500 Boot and install K3os curl -sfL https://github.com/rancher/k3os/releases/download/v0.19.4-dev.5/k3os-rootfs-arm64.tar.gz | tar zxvf - --strip-components=1 -C / Copy config with key and unique host name to node Check the directory /var/lib/rancher/k3s/storage were # is the node number\ncp myconfig#.yaml /k3os/system/config.yaml sync Installation link On Master:\nDisable “servicelbl”, since we will be installing “metallb” as a load balancer. sudo curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC=\"--no-deploy servicelbl\" sh -s - collect the token: K3S_TOKEN -\u003e /var/lib/rancher/k3s/server/node-token On worker nodes: sudo curl -sfL https://get.k3s.io | K3S_URL=https://sopine0.6browns.org:6443 K3S_TOKEN=K10cbfb18d6cc1d1466a93bd4412e086ce7fb61a6d7eecfaf3c179d84b252595292::server:caad6f691ddb92aff4c94edb7154a791 sh - Configure Cluster Access linkCreate a config\nCopy /etc/rancher/k3s/k3s.yaml on your machine located outside the cluster as ~/.kube/config. Then replace “localhost” with the IP or name of your K3s server. kubectl can now manage your K3s cluster.\nAddition systems linkMetallb link kubectl apply -f https://raw.githubusercontent.com/google/metallb/v0.9.3/manifests/namespace.yaml kubectl apply -f https://raw.githubusercontent.com/google/metallb/v0.9.3/manifests/metallb.yaml # On first install only kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey=\"$(openssl rand -base64 128)\" Configure load balancer\nkubectl apply -f metallb-config.yaml Cert-Manager link # Kubernetes 1.15+ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.14.1/cert-manager.crds.yaml kubectl create namespace cert-manager helm repo add jetstack https://charts.jetstack.io helm repo update helm install \\ cert-manager jetstack/cert-manager \\ --namespace cert-manager \\ --version v0.14.1 Output\nNAME: cert-manager LAST DEPLOYED: Mon Nov 23 19:37:22 2020 NAMESPACE: cert-manager STATUS: deployed REVISION: 1 TEST SUITE: None NOTES: cert-manager has been deployed successfully! In order to begin issuing certificates, you will need to set up a ClusterIssuer or Issuer resource (for example, by creating a 'letsencrypt-staging' issuer). More information on the different types of issuers and how to configure them can be found in our documentation: https://cert-manager.io/docs/configuration/ For information on how to configure cert-manager to automatically provision Certificates for Ingress resources, take a look at the `ingress-shim` documentation: https://cert-manager.io/docs/usage/ingress/ Dashboard link GITHUB_URL=https://github.com/kubernetes/dashboard/releases VERSION_KUBE_DASHBOARD=$(curl -w '%{url_effective}' -I -L -s -S ${GITHUB_URL}/latest -o /dev/null | sed -e 's|.*/||') kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/${VERSION_KUBE_DASHBOARD}/aio/deploy/recommended.yaml kubectl apply -f dashboard.admin-user.yaml kubectl apply -f dashboard.admin-user-role.yaml Get Token for Dashboard linkKubernetes Dashboard documentation\nCollect token\nkubectl get secrets -n kubernetes-dashboard Find admin-user-token instance and describe\nkubectl describe secret admin-user-token- -n kubernetes-dashboard Run proxy and connect\nkuberctl proxy connect…\n"
+            }
+        );
+    index.add(
+            {
+                id:  7 ,
+                href: "\/docs\/network\/kubernetes\/kubernetecluster\/",
+                title: "Kubernete Cluster",
+                description: "Rancher linkA cluster was added to the host pinarello, and Rancher was installed. Trying to add the felt cluster fails with a CrashLoopBackOff status. The log of the pod shows:\nsbrown@bianchi ~]$ kubectl logs -n cattle-system cattle-cluster-agent-6bb97bd9ff-qbdk2 INFO: Environment: CATTLE_ADDRESS=10.42.0.9 CATTLE_CA_CHECKSUM=0df5882f1714e8d8989215b7c25b59fd2cd623f62d568dd8adc34d1729c6fb06 CATTLE_CLUSTER=true CATTLE_CLUSTER_AGENT_PORT=tcp://10.43.129.180:80 CATTLE_CLUSTER_AGENT_PORT_443_TCP=tcp://10.43.129.180:443 CATTLE_CLUSTER_AGENT_PORT_443_TCP_ADDR=10.43.129.180 CATTLE_CLUSTER_AGENT_PORT_443_TCP_PORT=443 CATTLE_CLUSTER_AGENT_PORT_443_TCP_PROTO=tcp CATTLE_CLUSTER_AGENT_PORT_80_TCP=tcp://10.43.129.180:80 CATTLE_CLUSTER_AGENT_PORT_80_TCP_ADDR=10.43.129.180 CATTLE_CLUSTER_AGENT_PORT_80_TCP_PORT=80 CATTLE_CLUSTER_AGENT_PORT_80_TCP_PROTO=tcp CATTLE_CLUSTER_AGENT_SERVICE_HOST=10.43.129.180 CATTLE_CLUSTER_AGENT_SERVICE_PORT=80 CATTLE_CLUSTER_AGENT_SERVICE_PORT_HTTP=80 CATTLE_CLUSTER_AGENT_SERVICE_PORT_HTTPS_INTERNAL=443 CATTLE_CLUSTER_REGISTRY= CATTLE_INGRESS_IP_DOMAIN=sslip.io CATTLE_INSTALL_UUID=2ce92d8c-5a0a-485e-83cd-910a362cf557 CATTLE_INTERNAL_ADDRESS= CATTLE_IS_RKE=false CATTLE_K8S_MANAGED=true CATTLE_NODE_NAME=cattle-cluster-agent-6bb97bd9ff-qbdk2 CATTLE_SERVER=https://pinarello.6browns.org CATTLE_SERVER_VERSION=v2.6.6 INFO: Using resolv.conf: search cattle-system.svc.cluster.local svc.cluster.local cluster.",
+                content: "Rancher linkA cluster was added to the host pinarello, and Rancher was installed. Trying to add the felt cluster fails with a CrashLoopBackOff status. The log of the pod shows:\nsbrown@bianchi ~]$ kubectl logs -n cattle-system cattle-cluster-agent-6bb97bd9ff-qbdk2 INFO: Environment: CATTLE_ADDRESS=10.42.0.9 CATTLE_CA_CHECKSUM=0df5882f1714e8d8989215b7c25b59fd2cd623f62d568dd8adc34d1729c6fb06 CATTLE_CLUSTER=true CATTLE_CLUSTER_AGENT_PORT=tcp://10.43.129.180:80 CATTLE_CLUSTER_AGENT_PORT_443_TCP=tcp://10.43.129.180:443 CATTLE_CLUSTER_AGENT_PORT_443_TCP_ADDR=10.43.129.180 CATTLE_CLUSTER_AGENT_PORT_443_TCP_PORT=443 CATTLE_CLUSTER_AGENT_PORT_443_TCP_PROTO=tcp CATTLE_CLUSTER_AGENT_PORT_80_TCP=tcp://10.43.129.180:80 CATTLE_CLUSTER_AGENT_PORT_80_TCP_ADDR=10.43.129.180 CATTLE_CLUSTER_AGENT_PORT_80_TCP_PORT=80 CATTLE_CLUSTER_AGENT_PORT_80_TCP_PROTO=tcp CATTLE_CLUSTER_AGENT_SERVICE_HOST=10.43.129.180 CATTLE_CLUSTER_AGENT_SERVICE_PORT=80 CATTLE_CLUSTER_AGENT_SERVICE_PORT_HTTP=80 CATTLE_CLUSTER_AGENT_SERVICE_PORT_HTTPS_INTERNAL=443 CATTLE_CLUSTER_REGISTRY= CATTLE_INGRESS_IP_DOMAIN=sslip.io CATTLE_INSTALL_UUID=2ce92d8c-5a0a-485e-83cd-910a362cf557 CATTLE_INTERNAL_ADDRESS= CATTLE_IS_RKE=false CATTLE_K8S_MANAGED=true CATTLE_NODE_NAME=cattle-cluster-agent-6bb97bd9ff-qbdk2 CATTLE_SERVER=https://pinarello.6browns.org CATTLE_SERVER_VERSION=v2.6.6 INFO: Using resolv.conf: search cattle-system.svc.cluster.local svc.cluster.local cluster.local 6browns.org nameserver 10.43.0.10 options ndots:5 ERROR: https://pinarello.6browns.org/ping is not accessible (Could not resolve host: pinarello.6browns.org) The dnsutils pod shows this as a responce to pinarello.6browns.org:\n[sbrown@bianchi ~]$ kubectl exec -it dnsutils dig pinarello.6browns.org kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead. ; \u003c\u003c\u003e\u003e DiG 9.9.5-9+deb8u19-Debian \u003c\u003c\u003e\u003e pinarello.6browns.org ;; global options: +cmd ;; Got answer: ;; -\u003e\u003eHEADER\u003c\u003c- opcode: QUERY, status: NOERROR, id: 5865 ;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1 ;; OPT PSEUDOSECTION: ; EDNS: version: 0, flags:; udp: 4096 ;; QUESTION SECTION: ;pinarello.6browns.org.\tIN\tA ;; ANSWER SECTION: pinarello.6browns.org.\t5\tIN\tA\t192.168.1.251 ;; Query time: 8 msec ;; SERVER: 10.43.0.10#53(10.43.0.10) ;; WHEN: Wed Jul 13 01:13:40 UTC 2022 ;; MSG SIZE rcvd: 87 dnsutils is running on Tarmac, the register pod is running on Felt.\nAttempts to delete and add the external cluster seems to have put the rancher cluster in an unstable state. I ran “rancher-cleanup” to delete the Rancher instance and reinstalled Rancher with helm.\nhelm install rancher rancher-latest/rancher \\ --namespace cattle-system \\ --set hostname=192.168.1.251.sslip.io \\ --set replicas=1 \\ --set bootstrapPassword=vall27goff Use “https://192.168.1.251.sslip.io” as the Rancher URL in this attempt.\nThis is the error:\nINFO: Using resolv.conf: search cattle-system.svc.cluster.local svc.cluster.local cluster.local 6browns.org nameserver 10.43.0.10 options ndots:5 ERROR: https://192.168.1.251.sslip.io/ping is not accessible (Could not resolve host: 192.168.1.251.sslip.io) The proper response “pong” is returned if accessed from an external laptop.\nRun diagnostic pods on Felt to curl the ping URL and resolve the referenced name within the cluster, use nodename selector\nCert-Manager linkTest out the installation of Cert-Manager. link [sbrown@bianchi ~]$ cmctl check api Not ready: Internal error occurred: failed calling webhook \"webhook.cert-manager.io\": failed to call webhook: Post \"https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s\": context deadline exceeded Reinstall linkAfter deleting all cert artifacts…\nhelm install \\ cert-manager jetstack/cert-manager \\ --namespace cert-manager \\ --create-namespace \\ --version v1.8.2 \\ --set installCRDs=true Error:\nError: failed post-install: timed out waiting for the condition The webhook pod was scheduled on Tarmac, There may be some resolution issues on Tarmac and Felt. (Fedora Server) or possible connectivity issues.\nResolution on a dnsutils instance was successful.\n[sbrown@bianchi Kubernetes]$ kubectl exec -i -t dnsutils -- nslookup cert-manager-webhook.cert-manager Server:\t10.43.0.10 Address:\t10.43.0.10#53 Name:\tcert-manager-webhook.cert-manager.svc.cluster.local Address: 10.43.225.90 This was recommended on a help tread, and it seem to work for some reason.\n$ kubectl delete mutatingwebhookconfiguration.admissionregistration.k8s.io cert-manager-webhook $ kubectl delete validatingwebhookconfigurations.admissionregistration.k8s.io cert-manager-webhook API Check\n[sbrown@bianchi ~]$ cmctl check api The cert-manager API is ready [sbrown@bianchi ~]$ DNS resolution CoreDNS linkFelt - Fedora Server linkWhen the CoreDNS pod was scheduled on this node all requests to the DNS service from cluster pods timed out. This is possibly a network connectivity problem with the cluster networking (flannel).\nLook - FedoraCore linkThere is an issue with systemd-resolvers, and Kubernette that may cause a loop and fail to forward queries to the external DNS, typically defined in the /etc/resolv.conf file. A suggested resolution is to add a flag to the k3s service definition (kubernet/k3s program). Entering the following may resolve the problem. I believe these flags can be add to a configuration file for k3s instead of the systemd service definition.\nExecStart=/usr/local/bin/k3s \\ agent \\ 'resolv-conf' \\ '/run/systemd/resolve/resolv.conf' \\ '--selinux' \\ Canyon - Armbian (Debian based ARM distro) linkThis default configuration seems to work as expected. Queries for external hosts though nslookup require a terminating dot. If it is not terminated the search domain is appended.\nroot@dnsutils:/# nslookup google.com Server:\t10.43.0.10 Address:\t10.43.0.10#53 Non-authoritative answer: Name:\tgoogle.com.6browns.org Address: 173.72.245.3 This could be happening because the upstream DNS server (colnago.6browns.org - dnsmasq) is responding with the public IP for any unknown host on the 6browns.org domain.\nFrom a k3s issue thread…\nIn addition to configuring k3s with environment variables and cli arguments, k3s can also use a config file. By default, values present in a yaml file located at /etc/rancher/k3s/config.yaml will be used on install. An example of a basic server config file is below: # /etc/rancher/k3s/config.yaml write-kubeconfig-mode: \"0644\" tls-san: - \"foo.local\" node-label: - \"foo=bar\" - \"something=amazing\" In general, cli arguments map to their respective yaml key, with repeatable cli args being represented as yaml lists. An identical configuration using solely cli arguments is shown below to demonstrate this: k3s server \\ --write-kubeconfig-mode \"0644\" \\ --tls-san \"foo.local\" \\ --node-label \"foo=bar\" \\ --node-label \"something=amazing\" It is also possible to use both a configuration file and cli arguments. In these situations, values will be loaded from both sources, but cli arguments will take precedence. For repeatable arguments such as --node-label, the cli arguments will overwrite all values in the list. Dig seems to work as expected. This may just be the way it works.\n"
+            }
+        );
+    index.add(
+            {
+                id:  8 ,
+                href: "\/docs\/information-technology\/kubernetessidecar\/",
+                title: "Kubernetes Sidecar",
+                description: "Create a “sidecar” container to run “tcpdump” in the pod.\nIdentify an appropriate image with tcpdump d97jro/tcpdump Create a yaml file to modify the Name: coredns-6c6bb68b64-ncffx Namespace: kube-system Labels: k8s-app=kube-dns pod-template-hash=6c6bb68b64 Containers: tcpdump: Image: d97jro/tcpdump I’m not sure how you are suppose to run this image, so I’ll create a standard alpine container that I will install tcpdump once it is in the pod. The container may have to be updated later with a volume for the collection.",
+                content: "Create a “sidecar” container to run “tcpdump” in the pod.\nIdentify an appropriate image with tcpdump d97jro/tcpdump Create a yaml file to modify the Name: coredns-6c6bb68b64-ncffx Namespace: kube-system Labels: k8s-app=kube-dns pod-template-hash=6c6bb68b64 Containers: tcpdump: Image: d97jro/tcpdump I’m not sure how you are suppose to run this image, so I’ll create a standard alpine container that I will install tcpdump once it is in the pod. The container may have to be updated later with a volume for the collection.\nEdit deployment config…\nkubectl edit deployment coredns -n kube-system containers: \u003e - command: \u003e - /bin/sleep \u003e - infinity \u003e image: alpine \u003e imagePullPolicy: Always \u003e name: tcpdump resources: {} terminationMessagePath: /dev/termination-log terminationMessagePolicy: File - args: - -conf - /etc/coredns/Corefile Connect to the container and install tcpdump\nkubectl exec -it coredns-6457d5c768-7s95p -c tcpdump /bin/sh -n kube-system # apk update # apk add tcpdump "
+            }
+        );
+    index.add(
+            {
+                id:  9 ,
+                href: "\/docs\/network\/kubernetes\/cloudflarekubernetes\/",
+                title: "Cloudflare and Kubernetes",
+                description: "Cloudflared tunnel on K3s, connect to ingress, instead of service. That would allow trusted certificates from both internal sources and the CF system.\nOne post says, Cloudflare tunnel can only link to a service. In that case the ingress can be made for the internal service, and some other means for the tunnel. At the moment the noTLScheck option is set.\nhttps://blog.cloudflare.com/automated-origin-ca-for-kubernetes/\nhttps://blog.cloudflare.com/cloudflare-ca-encryption-origin/\nK3s cloudflared tunnel, check “access” option.\nGitea linkThe instance is running using the included DB.",
+                content: "Cloudflared tunnel on K3s, connect to ingress, instead of service. That would allow trusted certificates from both internal sources and the CF system.\nOne post says, Cloudflare tunnel can only link to a service. In that case the ingress can be made for the internal service, and some other means for the tunnel. At the moment the noTLScheck option is set.\nhttps://blog.cloudflare.com/automated-origin-ca-for-kubernetes/\nhttps://blog.cloudflare.com/cloudflare-ca-encryption-origin/\nK3s cloudflared tunnel, check “access” option.\nGitea linkThe instance is running using the included DB. The ROOT_URL parameter is not set correctly, and I need to review other option changes.\nUpdate values.yaml with ROOT_URL, now values-interalhadb.yaml Update helm instance Use secrets for the Gitea admin username and password Oauth configuration or LDAP\n"
+            }
+        );
+    index.add(
+            {
+                id:  10 ,
+                href: "\/docs\/information-technology\/monitoringalertingauditing\/",
+                title: "Monitoring, Alerting and Auditing",
+                description: "Overview linkThis should be self evident for obvious reasons. Monitoring and review of logs on a production system will provide an understanding of the base level operation of the systems. It may be a good practice to stress the systems while logging and collecting metrics to help define the operating parameters of the functional system. Knowing the limits of the system through testing will help define an alerting system for production monitoring and help define strategist for expanding the capacities of these systems.",
+                content: "Overview linkThis should be self evident for obvious reasons. Monitoring and review of logs on a production system will provide an understanding of the base level operation of the systems. It may be a good practice to stress the systems while logging and collecting metrics to help define the operating parameters of the functional system. Knowing the limits of the system through testing will help define an alerting system for production monitoring and help define strategist for expanding the capacities of these systems. Alerting will notify operators of potential impending problems, a change in workflow, and triggers to capacity changes.\nMetric Collection link Prometheus and Grafana\nA Prometheus server was installed on “DeRosa” with “node_exporters” on each of the other systems running in the environment. The results are very cool in the simple load monitoring initially configured. Prometheus does not store logs, so another method will be required either in addition to the Prometheus data store or as a replacement. Rancher Rio includes both Prometheus and Grafana in the stack. Loki is Grafana log analysis application The “TICK” stack (Telegraf, InfluxDB, Chronograf, Kapacitor) may be a workable alternative. InfluxDB accepts strings in time series, which has been use to store logs. Chronograf may be an alternative to Grafana. Log Collection and Analysis linkThere are a lot of reasons for collecting and analyzing logs and ultimately there is probably no single method in addressing these needs. I looks like Fluentd was developed to cope with this problem. Fluentd is a kind of log router and translator. It takes logs from many sources and forwards them to backend engins for storage and analysis. Elasticsearch, AlienVault, and object stores.\nTICK stack Syslog and something to analize, alert and archive Other Monitoring Systems linkThis listening seems to be a mixed bag of traditional SNMP monitoring applications along with some cloud based metric monitoring.\nNetData linkCollect SoC temp\nThe old BASH module can be used for this.\nTo enable the old BASH module do these:\nDisable sensors for python.d.plugin by editing /etc/netdata/python.d.conf and setting sensors: no. Enable sensors for charts.d.plugin by editing /etc/netdata/charts.d.conf and setting sensors=force. "
+            }
+        );
+    index.add(
+            {
+                id:  11 ,
+                href: "\/docs\/network\/kubernetes\/corednstroubleshooting\/",
+                title: "CoreDNS Troubleshooting",
+                description: "Test Cluster linkRun a quick Alpine instance for debugging: kubectl run -it --rm --restart=Never alpine --image=alpine sh Ping gateway on another node 3: eth0@if21: mtu 1450 qdisc noqueue state UP link/ether aa:82:29:16:75:a2 brd ff:ff:ff:ff:ff:ff inet 10.42.1.3/24 scope global eth0 valid_lft forever preferred_lft forever inet6 fe80::a882:29ff:fe16:75a2/64 scope link valid_lft forever preferred_lft forever ping 10.42.2.1 PING 10.42.2.1 (10.42.2.1): 56 data bytes 64 bytes from 10.42.2.1: seq=0 ttl=63 time=55.057 ms Lookup external host name / # nslookup slashdot.",
+                content: "Test Cluster linkRun a quick Alpine instance for debugging:\nkubectl run -it --rm --restart=Never alpine --image=alpine sh Ping gateway on another node 3: eth0@if21: mtu 1450 qdisc noqueue state UP link/ether aa:82:29:16:75:a2 brd ff:ff:ff:ff:ff:ff inet 10.42.1.3/24 scope global eth0 valid_lft forever preferred_lft forever inet6 fe80::a882:29ff:fe16:75a2/64 scope link valid_lft forever preferred_lft forever ping 10.42.2.1 PING 10.42.2.1 (10.42.2.1): 56 data bytes 64 bytes from 10.42.2.1: seq=0 ttl=63 time=55.057 ms Lookup external host name / # nslookup slashdot.org Server:\t10.43.0.10 Address:\t10.43.0.10:53 Non-authoritative answer: Name:\tslashdot.org Address: 216.105.38.15 Ping host name (failed) / # ping slashdot.org PING slashdot.org (173.72.137.37): 56 data bytes Ping IP address (succeeded) / # ping 216.105.38.15 PING 216.105.38.15 (216.105.38.15): 56 data bytes 64 bytes from 216.105.38.15: seq=0 ttl=53 time=109.920 ms Activate loging on CoreDNS queries kubectl get configmap -n kube-system coredns -o json | kubectl get configmap -n kube-system coredns -o json | sed -e 's_loadbalance_log\\\\n loadbalance_g' | kubectl apply -f - .. or edit CoreDNS Config and add “log” directive\n$ kubectl edit configmap coredns -n kube-system add data.Corefile.:53.log\nSymtoms link Dig from a pod connects to the coredns server on port 53 udp and resolves as expected. www.google.com is recognized as a FQDN Ping from a pod connects to the coredns server on a port other than 53 (but appear to be in the fifties) and attempts to resolve as a relative name (the search domains are added sequentially). Using the terminating dns “dot” will resolve the name as a FQDN. ie. “www.google.com.” works, note the terminating period (dot). Google Search Review linkA Google search on the symptoms observed provide a number of articles that may apply to the problem.\nUDP Connection Tracking and DNS Diagnostic container in the CoreDNS pod (sidecar?) Kubernetes “service” with an external “endpoint” CoreDNS plugins "
+            }
+        );
+    index.add(
+            {
+                id:  12 ,
+                href: "\/docs\/network\/kubernetes\/",
+                title: "Kubernetes",
+                description: "",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  13 ,
+                href: "\/docs\/network\/giteadroneintergration\/",
+                title: "Gitea Drone Intergration",
+                description: "Token: Create OAuth Application Client ID: Client Secret: Application Name: drone Redirect URI: http://derosa.k3s.6browns.org/login Create a shared secret openssl rand -hex 16 Download drone on Derosa docker pull drone/drone Start server DRONE_GITEA_CLIENT_ID= DRONE_GITEA_CLIENT_SECRET= DRONE_GITEA_SERVER=https://trek.6browns.org DRONE_RPC_SECRET= DRONE_SERVER_HOST=derosa.6browns.org DRONE_SERVER_PROTO=http docker run \\ --volume=/mnt/HD1/var/lib/drone:/data \\ --env=DRONE_GITEA_SERVER={{DRONE_GITEA_SERVER}} \\ --env=DRONE_GITEA_CLIENT_ID={{DRONE_GITEA_CLIENT_ID}} \\ --env=DRONE_GITEA_CLIENT_SECRET={{DRONE_GITEA_CLIENT_SECRET}} \\ --env=DRONE_RPC_SECRET={{DRONE_RPC_SECRET}} \\ --env=DRONE_SERVER_HOST={{DRONE_SERVER_HOST}} \\ --env=DRONE_SERVER_PROTO={{DRONE_SERVER_PROTO}} \\ --publish=80:80 \\ --publish=443:443 \\ --restart=always \\ --detach=true \\ --name=drone \\ drone/drone Create Kubernette Runners rbac drone service account Example deployment failed time=\"2020-03-09T15:32:57Z\" level=error msg=\"cannot ping the remote server\" error=\"Post https://drone.",
+                content: " Token: Create OAuth Application Client ID: Client Secret: Application Name: drone Redirect URI: http://derosa.k3s.6browns.org/login Create a shared secret openssl rand -hex 16 \u003creturn value\u003e Download drone on Derosa docker pull drone/drone Start server DRONE_GITEA_CLIENT_ID= DRONE_GITEA_CLIENT_SECRET= DRONE_GITEA_SERVER=https://trek.6browns.org DRONE_RPC_SECRET= DRONE_SERVER_HOST=derosa.6browns.org DRONE_SERVER_PROTO=http docker run \\ --volume=/mnt/HD1/var/lib/drone:/data \\ --env=DRONE_GITEA_SERVER={{DRONE_GITEA_SERVER}} \\ --env=DRONE_GITEA_CLIENT_ID={{DRONE_GITEA_CLIENT_ID}} \\ --env=DRONE_GITEA_CLIENT_SECRET={{DRONE_GITEA_CLIENT_SECRET}} \\ --env=DRONE_RPC_SECRET={{DRONE_RPC_SECRET}} \\ --env=DRONE_SERVER_HOST={{DRONE_SERVER_HOST}} \\ --env=DRONE_SERVER_PROTO={{DRONE_SERVER_PROTO}} \\ --publish=80:80 \\ --publish=443:443 \\ --restart=always \\ --detach=true \\ --name=drone \\ drone/drone Create Kubernette Runners rbac drone service account Example deployment failed time=\"2020-03-09T15:32:57Z\" level=error msg=\"cannot ping the remote server\" error=\"Post https://drone.6browns.org/rpc/v2/ping: x509: certificate is not valid for any names, but wanted to match drone.6browns.org\" Try this interactively and look at the drone port 3000, this is used by Grafana on Derosa "
+            }
+        );
+    index.add(
+            {
+                id:  14 ,
+                href: "\/docs\/network\/6brownswebrouting\/",
+                title: "6browns.org Web Routing",
+                description: "Tasks link Register wildcard record with DynDNS *.6browns.org -\u003e public How about DNS authentication for LetsEncrypt Port forward http and https to Trek internal IP Configure Caddy2 to reverse proxy appropriate hostnames This assumes Caddy works as an HTTPS endpoint and proxies the backend, much like what I have traditionally done with NGINX and WordPress gitea.6browns.org { # Templates give static sites some dynamic features #templates # Compress responses according to Accept-Encoding headers encode gzip zstd # Make HTML file extension optional try_files {path}.",
+                content: "Tasks link Register wildcard record with DynDNS *.6browns.org -\u003e public How about DNS authentication for LetsEncrypt Port forward http and https to Trek internal IP Configure Caddy2 to reverse proxy appropriate hostnames This assumes Caddy works as an HTTPS endpoint and proxies the backend, much like what I have traditionally done with NGINX and WordPress gitea.6browns.org { # Templates give static sites some dynamic features #templates # Compress responses according to Accept-Encoding headers encode gzip zstd # Make HTML file extension optional try_files {path}.html {path} # Send requests to /gitea to backend reverse_proxy localhost:3000 } trek.6browns.org { file_server } drone.6browns.org { encode gzip zstd reverse_proxy derosa.6browns.org:80 } Test connections link Trek.6browns.org curl -I https://trek.6browns.org linkHTTP/2 200 accept-ranges: bytes content-type: text/html; charset=utf-8 etag: “q1t8v31u7” last-modified: Sun, 01 Dec 2019 01:45:03 GMT server: Caddy content-length: 2383 date: Sun, 08 Mar 2020 23:45:46 GMT\n* [x] gitea.6browns.org ```bash # curl -I https://gitea.6browns.org HTTP/2 200 date: Sun, 08 Mar 2020 23:49:44 GMT server: Caddy set-cookie: lang=en-US; Path=/; Max-Age=2147483647 set-cookie: i_like_gitea=452cbdb05616bd3f; Path=/; HttpOnly set-cookie: _csrf=Vw-au-MsKAcOoPfMgyJMT8daMJY6MTU4MzcxMTM4NDI2MTQ3MDYzMA%3D%3D; Path=/; Expires=Mon, 09 Mar 2020 23:49:44 GMT; HttpOnly x-frame-options: SAMEORIGIN drone.6browns.org $ curl -I https://drone.6browns.org HTTP/2 200 cache-control: no-cache, no-store, must-revalidate, private, max-age=0 content-type: text/html; charset=UTF-8 date: Mon, 09 Mar 2020 02:00:31 GMT expires: Thu, 01 Jan 1970 00:00:00 UTC pragma: no-cache server: Caddy x-accel-expires: 0 x-frame-options: DENY x-xss-protection: 1; mode=block content-length: 786 "
+            }
+        );
+    index.add(
+            {
+                id:  15 ,
+                href: "\/docs\/information-technology\/",
+                title: "Information Technology",
+                description: "",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  16 ,
+                href: "\/docs\/information-technology\/itglue\/",
+                title: "ITGlue",
+                description: "From: “9 ITGlue Alternatives for IT Documentation That All MSPs Should Consider”\nITGlue is a collaborative, cloud-based IT documentation platform created to help MSPs standardize documentation, create knowledge bases, manage passwords and track devices.\nThere seem to be some canned process workflow for typical MSP (Managed Service Provider) tasks, they may call this thing “Process Street”. It looks like Process Street is a separate application that will integrate with ITGlue.",
+                content: "From: “9 ITGlue Alternatives for IT Documentation That All MSPs Should Consider”\nITGlue is a collaborative, cloud-based IT documentation platform created to help MSPs standardize documentation, create knowledge bases, manage passwords and track devices.\nThere seem to be some canned process workflow for typical MSP (Managed Service Provider) tasks, they may call this thing “Process Street”. It looks like Process Street is a separate application that will integrate with ITGlue.\nPSA (Personal Services Automation)\nConnectWise comes up in the document a lot…\n"
+            }
+        );
+    index.add(
+            {
+                id:  17 ,
+                href: "\/docs\/network\/pine64clusterboardpart1\/",
+                title: "Pine64 ClusterBoard - Part1",
+                description: "Console Connection linkMost of this information was obtained from the Pine64 Forum the diagram / images were no longer stored on the forum and I’ve added information for clarity.\nI’m using the SERIAL CONSOLE “Woodpecker” Edition board to connect to the ClusterBoard’s UART GPIO slot\nWoodpecker ClusterBoard slot GPIO (7 slots) GND Brown Pin 6 GND RTX Red Pin 7 PL10 G362 (E) S_PWM TXD White Pin 8 P8 PB0 G32 (E) UART2_TX Plug “Woodpecker” into an available USB port on a workstation.",
+                content: "Console Connection linkMost of this information was obtained from the Pine64 Forum the diagram / images were no longer stored on the forum and I’ve added information for clarity.\nI’m using the SERIAL CONSOLE “Woodpecker” Edition board to connect to the ClusterBoard’s UART GPIO slot\nWoodpecker ClusterBoard slot GPIO (7 slots) GND Brown Pin 6 GND RTX Red Pin 7 PL10 G362 (E) S_PWM TXD White Pin 8 P8 PB0 G32 (E) UART2_TX Plug “Woodpecker” into an available USB port on a workstation. Identify the device /dev/ttyUSB#, and connect a Screen instance:\nscreen /dev/ttyUSB0 115200 Power on the ClusterBoard, it looks like a SD card is required to begin the boot process. The console should display the boot log as the process proceeds. In my case the Armbian image did not boot.\nBoot Image linkI initially I tried an Armbian Buster image for the Sopine64 board. I got output, but the system ultimately ended up in the uboot environment. The first step in the diagnostic process is capturing the boot log messages for a little more detail, this will most likely be done with screen. There appear to be three possible images / systems that may be possible to boot. The most likely image Armbian Sopine, and, possibility Alpine. Ultimately K3os with replace the root partition image.\nARM64 images seem to include DTB files that I believe define the components need for particular boards. The Armbian image includes the file “sun50i-a64-sophie-baseboard.dtb” this certainly looks encouraging.\nAlpine linkMost of the package for the K3os install are from this disro, so it may be the best option for a bootable kernel.\nArmbian linkThis is the most likely bootable image. The image booted with not network, this may be a known issue. Resetting the board and reconnecting the network connection seem to resolve the problem. There maybe some I/O errors on the mSD card.\nI’ve used a few combinations of images and techniques for the boot process, however many have failed somewhere alone the line. This is what I have so far:\nsopine1 is up using Armbian, but I don’t remember which image. (Probably Bionic) sopine0\nArmbian Bionic image for Pine64so on an mSSD. This seems to boot. The same image on the eMMC hangs at “Starting kernel…”. It looks like U-Boot is working but “boot.scr” seems to be incorrect. Another option for the base system seems to be the OpenEnbedded build sysetm.\nK3os linkUltimately this is the image that should be installed in the cluster and will be managed by the K3s system, but it looks like it will require a bootable kernel for installation.\nRunning the following on a bootable Armbian images seems to have worked. There is no console messages once the image switches to the root partition, and no tty console, however ssh with the configured rancher user (config.yaml) worked.\ncurl -sfL https://github.com/rancher/k3os/releases/download/v0.8.0/k3os-rootfs-arm64.tar.gz| tar zxvf - --strip-components=1 -C / cp myconfig.yaml /k3os/system/config.yaml sync reboot -f config.yaml\nssh_authorized_keys: - ssh-rsa \u003c...\u003e= sbrown@bianchi hostname: sopine# run_cmd: - \"echo hi \u0026\u0026 echo bye\" boot_cmd: - \"echo hi \u0026\u0026 echo bye\" init_cmd: - \"echo hi \u0026\u0026 echo bye\" k3os: data_sources: - cdrom dns_nameservers: - 8.8.8.8 - 1.1.1.1 ntp_servers: - 0.us.pool.ntp.org - 1.us.pool.ntp.org password: rancher Add config.yaml to the worker node’s /var/lib/rancher/k3os directory to join the cluster\nk3os: server_url: https://sopine0.6browns.org:6443 token: K101263c79eda3447e2e671f4f59a99914a989c44684dfc2fd121bbb3cc57d4b0e8::server:0d33b0dbf4499e27bafd7a28cd99a2c8 Rio linkRio is a layered product on the Rancher K3s infrastructure that provides a micro Platform as a Service (uPaaS). There are many features included in the platform including Prometheus and Grafana for monitoring.\n"
+            }
+        );
+    index.add(
+            {
+                id:  18 ,
+                href: "\/docs\/network\/onpsensereverseproxy\/",
+                title: "ONPSense Reverse Proxy",
+                description: "Overview linkAll ingress into the BFNet network will have to enter the network from the public interface to the OPNsense gateway (browngw.6browns.org). The NGINX reverse proxy will need to “route” connections based on the host information on incoming packets, since all packets will be routed via IP to the public interface. The documentation for OPNsense identifies four TLS configurations\nBreaking up the connection on the firewall (down- and upstream are using TLS) Decrypt an encrypted upstream (downstream plain, upstream TLS protected) TLS Offloading (downstream is TLS protected, upstream is plain) TLS Passthough The first and fourth options seem to be the most practicable, while option two (downstream plain) will be problematic with modern browsers that expect to connect securely.",
+                content: "Overview linkAll ingress into the BFNet network will have to enter the network from the public interface to the OPNsense gateway (browngw.6browns.org). The NGINX reverse proxy will need to “route” connections based on the host information on incoming packets, since all packets will be routed via IP to the public interface. The documentation for OPNsense identifies four TLS configurations\nBreaking up the connection on the firewall (down- and upstream are using TLS) Decrypt an encrypted upstream (downstream plain, upstream TLS protected) TLS Offloading (downstream is TLS protected, upstream is plain) TLS Passthough The first and fourth options seem to be the most practicable, while option two (downstream plain) will be problematic with modern browsers that expect to connect securely. Option three (downstream TLS, upstream plain), this may be an option for external access, but again browsers do not seem to like unencrypted connection that are designed in this model with internal connections. I will look at this option, because it is the easiest and will provide a good start.\nTLS Offloading (downstream is TLS protected, upstream is plain) linkThis option will ultimately not be as useful as the two fully encrypted options, but it may have limited use and it will be the easiest to configure and test.\nCreate a HTTP target\nUse NGINX-app as the target, this instance resides in the “dev” namespace. Point local DNS nginx-app.k3s.6browns.org to Traefik LB IP\nTest connection from GW\nroot@browngw:~ # curl -Iv http://nginx-app.k3s.6browns.org Create proxy forward host on GW to “nginx-app.k3s.6browns.org”\nNGINX -\u003eConfiguration -\u003e Upstream -\u003e Upstream Server * Description: NGINX-app Upstream Server * Server: nginx-app.k3s.6browns.org * Port: 80 * Server Priority: 1 NGINX -\u003eConfiguration -\u003e Upstream -\u003e Upstream * Description: NGINX-app_Upstream * Server Entries: NGINX-app-Upstream-Server Configure a TLS endpoint on GW HTTP Location Description: NGINX app Redirect URL Pattern: / Upstream Servers: NGINX-app_Upstream HTTP Server Server Name: nginx-app.k3s.6browns.org Location: NGINX app Redirect TLS Certificate: nginx-app.k3s.6browns.org (ACME Client) - previously provisioned Breaking up the connection on the firewall (down- and upstream are using TLS) linkThis option may be the most usefull. It will encrypt traffic both into the GW and from the GW to the target. The downstream encryption will use a Let’s Encrypt certificate as previous described. Traffic to the target will use an internal certificate signed by a CA on the GW.\nCreate Internal certificate GW Trust -\u003e Certificates Method: Create an internal Cerificate Descriptive Name: whoami-internal Certificate Authority: bfnet-intermediate-ca Type: Client and Server Common Name: whoami.6browns.org Alternate Names: DNS whoami.k3s.6browns.org Create TLS secret in “whoami” namespace Install internal certificate\nkubectl create secret tls whoami.k3s.6browns.org-tls --key=\"whoami-internal.key\" --cert=\"whoami-internal.crt\" -n whoami Create Ingressroute with websecure endpoint and internal cert\nTest connection from GW\nroot@browngw:~ # curl -Iv https://whoami.k3s.6browns.org Create Upstream via HTTPS Create redirect virtual server with Let’s Encrypt endpoint AWS test instance:\nstephenbrown@Stephens-MBP .ssh % ssh -i \"accesstest.pem\" ec2-user@ec2-44-203-146-109.compute-1.amazonaws.com The connections failed. First the Cloudflare configuration for DNS-01 verification had to be reconfigured. Next I was receiving a 404 error from the curl test on the AWS instance. For whatever reason I had to edit the NGINX.conf file to change the proxy_pass directive from http to https.\nThe day after a successful connection, I started to get 505 errors. Looking at the “HTTP error” logs, it appeared the interconnection failed due to an untrusted certificate. Curl on the GW works since I added the bfnet-ca to the trusted file “CAfile: /usr/local/etc/ssl/cert.pem”. I’m guessing the NGINX system is not using this ROOT CA. Manually setting the configuration proxy_verify=off resolved the problem, but I will need to have the internal certs trusted by the NGINX implementation.\nupstream upstreambdc14352f04040f6864d11a0766a6153 { server whoami.k3s.6browns.org:443 weight=1; } ... proxy_pass **https**://upstreambdc14352f04040f6864d11a0766a6153; TLS Passthough linkThere may be instances where the secure channel can not be broken as was configured above. In this instance cert-manger can be used to generate a ACME cert and the firewall NGINX proxy can use SNI routing to pass traffic to the cluster. I will try this for Teleport.\nCert-mangaer generate certificate secrets Install Teleport chart, use the MetalLB Configure SNI NGINX routing Test with curl on AWS instance "
+            }
+        );
+    index.add(
+            {
+                id:  19 ,
+                href: "\/docs\/cycling\/",
+                title: "Cycling",
+                description: "",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  20 ,
+                href: "\/docs\/",
+                title: "Docs",
+                description: "",
+                content: ""
+            }
+        );
+    search.addEventListener('input', show_results, true);
+
+    function show_results(){
+        const maxResult =  5 ;
+        const minlength =  0 ;
+        var searchQuery = sanitizeHTML(this.value);
+        var results = index.search(searchQuery, {limit: maxResult, enrich: true});
+
+        
+        const flatResults = new Map(); 
+        for (const result of results.flatMap(r => r.result)) {
+        if (flatResults.has(result.doc.href)) continue;
+        flatResults.set(result.doc.href, result.doc);
+        }
+
+        suggestions.innerHTML = "";
+        suggestions.classList.remove('d-none');
+
+        
+        if (searchQuery.length < minlength) {
+            const minCharMessage = document.createElement('div')
+            minCharMessage.innerHTML = `Please type at least <strong>${minlength}</strong> characters`
+            minCharMessage.classList.add("suggestion__no-results");
+            suggestions.appendChild(minCharMessage);
+            return;
+        } else {
+            
+            if (flatResults.size === 0 && searchQuery) {
+                const noResultsMessage = document.createElement('div')
+                noResultsMessage.innerHTML = "No results for" + ` "<strong>${searchQuery}</strong>"`
+                noResultsMessage.classList.add("suggestion__no-results");
+                suggestions.appendChild(noResultsMessage);
+                return;
+            }
+        }
+
+        
+        for(const [href, doc] of flatResults) {
+            const entry = document.createElement('div');
+            suggestions.appendChild(entry);
+
+            const a = document.createElement('a');
+            a.href = href;
+            entry.appendChild(a);
+
+            const title = document.createElement('span');
+            title.textContent = doc.title;
+            title.classList.add("suggestion__title");
+            a.appendChild(title);
+
+            const description = document.createElement('span');
+            description.textContent = doc.description;
+            description.classList.add("suggestion__description");
+            a.appendChild(description);
+
+            suggestions.appendChild(entry);
+
+            if(suggestions.childElementCount == maxResult) break;
+        }
+    }
+    }());
+</script>
+        
+    </body>
+</html>

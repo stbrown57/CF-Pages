@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Information Technology on BFNet Docs</title>
+    <link>//localhost:1313/docs/information-technology/</link>
+    <description>Recent content in Information Technology on BFNet Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 21 Sep 2023 15:31:07 -0400</lastBuildDate>
+    <atom:link href="//localhost:1313/docs/information-technology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes Sidecar</title>
+      <link>//localhost:1313/docs/information-technology/kubernetessidecar/</link>
+      <pubDate>Thu, 21 Sep 2023 15:31:07 -0400</pubDate>
+      <guid>//localhost:1313/docs/information-technology/kubernetessidecar/</guid>
+      <description>Create a &amp;ldquo;sidecar&amp;rdquo; container to run &amp;ldquo;tcpdump&amp;rdquo; in the pod.&#xA;Identify an appropriate image with tcpdump d97jro/tcpdump Create a yaml file to modify the Name: coredns-6c6bb68b64-ncffx Namespace: kube-system Labels: k8s-app=kube-dns pod-template-hash=6c6bb68b64 Containers: tcpdump: Image: d97jro/tcpdump I&amp;rsquo;m not sure how you are suppose to run this image, so I&amp;rsquo;ll create a standard alpine container that I will install tcpdump once it is in the pod. The container may have to be updated later with a volume for the collection.</description>
+    </item>
+    <item>
+      <title>Monitoring, Alerting and Auditing</title>
+      <link>//localhost:1313/docs/information-technology/monitoringalertingauditing/</link>
+      <pubDate>Thu, 21 Sep 2023 14:57:41 -0400</pubDate>
+      <guid>//localhost:1313/docs/information-technology/monitoringalertingauditing/</guid>
+      <description>Overview linkThis should be self evident for obvious reasons. Monitoring and review of logs on a production system will provide an understanding of the base level operation of the systems. It may be a good practice to stress the systems while logging and collecting metrics to help define the operating parameters of the functional system. Knowing the limits of the system through testing will help define an alerting system for production monitoring and help define strategist for expanding the capacities of these systems.</description>
+    </item>
+    <item>
+      <title>ITGlue</title>
+      <link>//localhost:1313/docs/information-technology/itglue/</link>
+      <pubDate>Thu, 21 Sep 2023 14:01:01 -0400</pubDate>
+      <guid>//localhost:1313/docs/information-technology/itglue/</guid>
+      <description>From: &amp;ldquo;9 ITGlue Alternatives for IT Documentation That All MSPs Should Consider&amp;rdquo;&#xA;ITGlue is a collaborative, cloud-based IT documentation platform created to help MSPs standardize documentation, create knowledge bases, manage passwords and track devices.&#xA;There seem to be some canned process workflow for typical MSP (Managed Service Provider) tasks, they may call this thing &amp;ldquo;Process Street&amp;rdquo;. It looks like Process Street is a separate application that will integrate with ITGlue.</description>
+    </item>
+  </channel>
+</rss>

@@ -2,8 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>//localhost:1313/docs/network/</loc>
+    <lastmod>2023-09-21T13:55:22-04:00</lastmod>
+  </url><url>
     <loc>//localhost:1313/docs/cycling/2023-09-19-cannonball2023/</loc>
     <lastmod>2023-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/docs/cycling/b2024-06-30-bike/</loc>
+    <lastmod>2024-06-30T19:46:59-04:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/example-content/</loc>
     <lastmod>2023-05-22T00:34:57+01:00</lastmod>
@@ -14,17 +20,53 @@
     <loc>//localhost:1313/docs/example-content/mermaid/</loc>
     <lastmod>2023-09-08T05:12:51+01:00</lastmod>
   </url><url>
+    <loc>//localhost:1313/docs/network/kubernetes/k3srebuild/</loc>
+    <lastmod>2023-09-21T15:40:51-04:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/docs/network/kubernetes/kubernetecluster/</loc>
+    <lastmod>2023-09-21T15:39:22-04:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/docs/information-technology/kubernetessidecar/</loc>
+    <lastmod>2023-09-21T15:31:07-04:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/docs/network/kubernetes/cloudflarekubernetes/</loc>
+    <lastmod>2023-09-21T15:19:46-04:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/docs/information-technology/monitoringalertingauditing/</loc>
+    <lastmod>2023-09-21T14:57:41-04:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/docs/network/kubernetes/corednstroubleshooting/</loc>
+    <lastmod>2023-09-21T14:28:17-04:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/docs/network/kubernetes/</loc>
+    <lastmod>2023-09-21T14:27:27-04:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/docs/network/giteadroneintergration/</loc>
+    <lastmod>2023-09-21T14:24:55-04:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/docs/network/6brownswebrouting/</loc>
+    <lastmod>2023-09-21T14:19:39-04:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/docs/information-technology/</loc>
+    <lastmod>2023-09-21T14:07:17-04:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/docs/information-technology/itglue/</loc>
+    <lastmod>2023-09-21T14:01:01-04:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/docs/network/pine64clusterboardpart1/</loc>
+    <lastmod>2023-09-21T13:58:39-04:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/docs/network/onpsensereverseproxy/</loc>
+    <lastmod>2023-09-21T13:51:38-04:00</lastmod>
+  </url><url>
     <loc>//localhost:1313/docs/cycling/</loc>
     <lastmod>2023-09-21T13:29:47-04:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/docs/cycling/2023-09-20-bike/</loc>
-    <lastmod>2023-09-21T12:27:19-04:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/</loc>
-    <lastmod>2023-09-21T15:40:51-04:00</lastmod>
+    <lastmod>2024-06-30T19:46:59-04:00</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/</loc>
-    <lastmod>2023-09-21T15:40:51-04:00</lastmod>
+    <lastmod>2024-06-30T19:46:59-04:00</lastmod>
   </url><url>
     <loc>//localhost:1313/categories/</loc>
   </url><url>

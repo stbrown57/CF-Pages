@@ -12,6 +12,31 @@
     
 
 
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+        
+        
+            
+                
+            
+                
+            
+                
+            
+        
+
+
+
+
 <html lang="en-us" dir="ltr"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8" />
     <title>BFNet Docs</title>
@@ -124,28 +149,19 @@
 
         
             <script type="text/javascript" src="//localhost:1313/js/bundle.js" ></script>
+
         
-            <script>
-                
-                const viewers = document.querySelectorAll(".image-compare");
-                let configs = [
-                    
-                        
-                            {"addCircle":true,"addCircleBlur":false,"labelOptions":{"after":"Light","before":"Dark","onHover":false},"showLabels":true,"startingPoint":50},
-                        
-                    
-                        
-                            {"addCircle":true,"addCircleBlur":false,"controlColor":"#3C4257","labelOptions":{"after":"Life Saver","before":"Inter","onHover":false},"showLabels":true,"startingPoint":25},
-                        
-                    
-                        
-                            {"addCircle":true,"addCircleBlur":true,"labelOptions":{"after":"Cardinal","before":"Blue","onHover":false},"showLabels":true,"startingPoint":25},
-                        
-                    
-                ];
-                viewers.forEach((element, i) => {
+        
+        <script>
+            const viewers = document.querySelectorAll(".image-compare");
+            let configs = [
+                {"addCircle":true,"addCircleBlur":false,"labelOptions":{"after":"Light","before":"Dark","onHover":false},"showLabels":true,"startingPoint":50},{"addCircle":true,"addCircleBlur":false,"controlColor":"#3C4257","labelOptions":{"after":"Life Saver","before":"Inter","onHover":false},"showLabels":true,"startingPoint":25},{"addCircle":true,"addCircleBlur":true,"labelOptions":{"after":"Cardinal","before":"Blue","onHover":false},"showLabels":true,"startingPoint":25}
+            ];
+            viewers.forEach((element, i) => {
                 let view = new ImageCompare(element, configs[i]).mount();
-                });
-            </script>
+            });
+        </script>
+        
+
     </body>
 </html>

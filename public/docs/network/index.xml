@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Network on BFNet Docs</title>
+    <link>//localhost:1313/docs/network/</link>
+    <description>Recent content in Network on BFNet Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 21 Sep 2023 14:24:55 -0400</lastBuildDate>
+    <atom:link href="//localhost:1313/docs/network/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gitea Drone Intergration</title>
+      <link>//localhost:1313/docs/network/giteadroneintergration/</link>
+      <pubDate>Thu, 21 Sep 2023 14:24:55 -0400</pubDate>
+      <guid>//localhost:1313/docs/network/giteadroneintergration/</guid>
+      <description>Token: Create OAuth Application Client ID: Client Secret: Application Name: drone Redirect URI: http://derosa.k3s.6browns.org/login Create a shared secret openssl rand -hex 16 &amp;lt;return value&amp;gt; Download drone on Derosa docker pull drone/drone Start server DRONE_GITEA_CLIENT_ID=&amp;lt;ID&amp;gt; DRONE_GITEA_CLIENT_SECRET=&amp;lt;secret&amp;gt; DRONE_GITEA_SERVER=https://trek.6browns.org DRONE_RPC_SECRET=&amp;lt;other secret&amp;gt; DRONE_SERVER_HOST=derosa.6browns.org DRONE_SERVER_PROTO=http docker run \ --volume=/mnt/HD1/var/lib/drone:/data \ --env=DRONE_GITEA_SERVER={{DRONE_GITEA_SERVER}} \ --env=DRONE_GITEA_CLIENT_ID={{DRONE_GITEA_CLIENT_ID}} \ --env=DRONE_GITEA_CLIENT_SECRET={{DRONE_GITEA_CLIENT_SECRET}} \ --env=DRONE_RPC_SECRET={{DRONE_RPC_SECRET}} \ --env=DRONE_SERVER_HOST={{DRONE_SERVER_HOST}} \ --env=DRONE_SERVER_PROTO={{DRONE_SERVER_PROTO}} \ --publish=80:80 \ --publish=443:443 \ --restart=always \ --detach=true \ --name=drone \ drone/drone Create Kubernette Runners rbac drone service account Example deployment failed time=&amp;#34;2020-03-09T15:32:57Z&amp;#34; level=error msg=&amp;#34;cannot ping the remote server&amp;#34; error=&amp;#34;Post https://drone.</description>
+    </item>
+    <item>
+      <title>6browns.org Web Routing</title>
+      <link>//localhost:1313/docs/network/6brownswebrouting/</link>
+      <pubDate>Thu, 21 Sep 2023 14:19:39 -0400</pubDate>
+      <guid>//localhost:1313/docs/network/6brownswebrouting/</guid>
+      <description>Tasks link Register wildcard record with DynDNS *.6browns.org -&amp;gt; public How about DNS authentication for LetsEncrypt Port forward http and https to Trek internal IP Configure Caddy2 to reverse proxy appropriate hostnames This assumes Caddy works as an HTTPS endpoint and proxies the backend, much like what I have traditionally done with NGINX and WordPress gitea.6browns.org { # Templates give static sites some dynamic features #templates # Compress responses according to Accept-Encoding headers encode gzip zstd # Make HTML file extension optional try_files {path}.</description>
+    </item>
+    <item>
+      <title>Pine64 ClusterBoard - Part1</title>
+      <link>//localhost:1313/docs/network/pine64clusterboardpart1/</link>
+      <pubDate>Thu, 21 Sep 2023 13:58:39 -0400</pubDate>
+      <guid>//localhost:1313/docs/network/pine64clusterboardpart1/</guid>
+      <description>Console Connection linkMost of this information was obtained from the Pine64 Forum the diagram / images were no longer stored on the forum and I&amp;rsquo;ve added information for clarity.&#xA;I&amp;rsquo;m using the SERIAL CONSOLE “Woodpecker” Edition board to connect to the ClusterBoard&amp;rsquo;s UART GPIO slot&#xA;Woodpecker ClusterBoard slot GPIO (7 slots) GND Brown Pin 6 GND RTX Red Pin 7 PL10 G362 (E) S_PWM TXD White Pin 8 P8 PB0 G32 (E) UART2_TX Plug &amp;ldquo;Woodpecker&amp;rdquo; into an available USB port on a workstation.</description>
+    </item>
+    <item>
+      <title>ONPSense Reverse Proxy</title>
+      <link>//localhost:1313/docs/network/onpsensereverseproxy/</link>
+      <pubDate>Thu, 21 Sep 2023 13:51:38 -0400</pubDate>
+      <guid>//localhost:1313/docs/network/onpsensereverseproxy/</guid>
+      <description>Overview linkAll ingress into the BFNet network will have to enter the network from the public interface to the OPNsense gateway (browngw.6browns.org). The NGINX reverse proxy will need to &amp;ldquo;route&amp;rdquo; connections based on the host information on incoming packets, since all packets will be routed via IP to the public interface. The documentation for OPNsense identifies four TLS configurations&#xA;Breaking up the connection on the firewall (down- and upstream are using TLS) Decrypt an encrypted upstream (downstream plain, upstream TLS protected) TLS Offloading (downstream is TLS protected, upstream is plain) TLS Passthough The first and fourth options seem to be the most practicable, while option two (downstream plain) will be problematic with modern browsers that expect to connect securely.</description>
+    </item>
+  </channel>
+</rss>
